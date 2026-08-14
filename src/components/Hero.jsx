@@ -1,51 +1,53 @@
-import { useState } from "react";
-import { Play, HeartHandshake, MapPin, Clock3, Syringe, ShieldCheck, ArrowRight } from "lucide-react";
-import TypewriterText from "./TypewriterText";
+import React, { useState } from "react";
+import { Play, ArrowRight, Activity, Clock, Heart, MapPin } from "lucide-react";
 import { Button } from "./ui/Button";
-import useInView from "../hooks/useInView";
+import { useInView } from "../hooks/useInView";
+import heroImg from "../assets/hero.jpg";
+
+const VIDEO_ID = "rFmuV3urCKs";
+const VIDEO_TITLE = "Vidéo explicative : Pourquoi et comment donner son sang ?";
 
 const INFO_CARDS = [
   {
-    icon: HeartHandshake,
+    icon: Activity,
     label: "Suis-je éligible ?",
-    description: "Un test en 30 secondes.",
+    description: "Test interactif rapide en 30 sec.",
     href: "#eligibilite",
   },
   {
     icon: MapPin,
     label: "Où puis-je donner ?",
-    description: "8 centres, horaires en direct.",
+    description: "8 centres répertoriés au Bénin.",
     href: "#ou-donner",
   },
   {
-    icon: Clock3,
+    icon: Clock,
     label: "Combien de temps ?",
-    description: "45 min, étape par étape.",
+    description: "45 minutes au total.",
     href: "#deroulement",
   },
   {
-    icon: Syringe,
+    icon: Heart,
     label: "Est-ce douloureux ?",
-    description: "Une piqûre, rien de plus.",
+    description: "Juste une piqûre rapide sans danger.",
     href: "#faq",
   },
 ];
 
-// Vidéo HUG : "Don du sang - vidéo d'information sur le déroulement d'un don"
-const VIDEO_ID = "rFmuV3urCKs";
-const VIDEO_TITLE = "Déroulement d'un don de sang";
-
 function HeroVideo() {
   const [playing, setPlaying] = useState(false);
+  const [imgSrc, setImgSrc] = useState(
+    `https://img.youtube.com/vi/${VIDEO_ID}/hqdefault.jpg`
+  );
 
   return (
-    <div className="relative aspect-[16/9] sm:aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl bg-neutral-900 border border-neutral-200/80 group">
+    <div className="relative aspect-[16/9] sm:aspect-[16/10] md:aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl bg-slate-950 border border-white/10 group hover:border-primary-500/50 transition-all duration-500">
       {playing ? (
         <iframe
           className="w-full h-full"
           src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0`}
           title={VIDEO_TITLE}
-          allow="accelerate; autoplay; encrypted-media; picture-in-picture"
+          allow="accelerate; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
       ) : (
@@ -56,17 +58,25 @@ function HeroVideo() {
           aria-label={`Lancer la vidéo : ${VIDEO_TITLE}`}
         >
           <img
-            src={`https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
+            src={imgSrc}
+            onError={() =>
+              setImgSrc(`https://img.youtube.com/vi/${VIDEO_ID}/hqdefault.jpg`)
+            }
             alt="Vidéo explicative sur le don de sang"
-            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            className="w-full h-full object-cover opacity-85 transition-transform duration-700 ease-out group-hover:scale-105 group-hover:opacity-100"
           />
-          <div className="absolute inset-0 bg-neutral-900/35 group-hover:bg-neutral-900/25 transition-colors flex items-center justify-center">
-            <span className="inline-flex items-center gap-3 rounded-full bg-white/95 backdrop-blur-md text-neutral-900 font-bold px-7 py-3.5 shadow-2xl transition-all duration-300 group-hover:scale-105 group-hover:bg-white">
-              <span className="w-10 h-10 rounded-full bg-primary-600 text-white flex items-center justify-center shadow-md group-hover:bg-primary-700 transition-colors">
-                <Play size={18} fill="currentColor" className="ml-0.5" />
+          <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors flex items-center justify-center">
+            <div className="relative flex items-center justify-center">
+              <span className="absolute w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary-500/40 animate-ping" />
+              <span className="relative inline-flex items-center gap-2 sm:gap-3 rounded-full bg-white/95 backdrop-blur-md text-slate-900 font-extrabold px-3 py-2 sm:px-5 sm:py-3 shadow-2xl transition-all duration-300 group-hover:scale-105 group-hover:bg-white border border-white">
+                <span className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary-500 text-white flex items-center justify-center shadow-md group-hover:bg-primary-600 group-hover:scale-110 transition-all">
+                  <Play size={14} fill="currentColor" className="ml-0.5" />
+                </span>
+                <span className="text-[10px] xs:text-xs sm:text-sm font-extrabold text-slate-900 whitespace-nowrap">
+                  Voir la vidéo <span className="hidden xs:inline">(2 min)</span>
+                </span>
               </span>
-              <span className="text-sm sm:text-base font-extrabold">Voir le déroulement (3 min)</span>
-            </span>
+            </div>
           </div>
         </button>
       )}
@@ -75,7 +85,7 @@ function HeroVideo() {
 }
 
 export default function Hero() {
-  const [cardsRef, cardsInView] = useInView({ threshold: 0.2 });
+  const [cardsRef, cardsInView] = useInView({ threshold: 0.15 });
 
   const scrollToSection = (href) => {
     const target = document.querySelector(href);
@@ -87,110 +97,102 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative bg-gradient-to-b from-surface/80 via-surface/40 to-background pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        
+    <section className="relative min-h-screen flex items-center pt-24 xs:pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16 md:pb-24 overflow-hidden bg-[#0B1528] text-white">
+      {/* Image de fond hero.jpg parfaitement visible sous filtre bleu nuit médical */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <img
+          src={heroImg}
+          alt="Don de sang et soins médicaux"
+          className="w-full h-full object-cover object-center filter brightness-90 contrast-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1528]/95 via-[#0B1528]/70 to-[#0B1528]/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1528] via-transparent to-[#0B1528]/50" />
+      </div>
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 xs:px-6 sm:px-8 lg:px-12 grid lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-16 items-center">
         {/* Colonne texte (6 cols) */}
-        <div className="lg:col-span-6">
-          <span
-            className="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-primary-700 bg-primary-100/70 border border-primary-200/80 rounded-full px-3.5 py-1 mb-6 opacity-0 animate-fade-up"
-            style={{ animationDelay: "0.1s" }}
-          >
-            <ShieldCheck size={14} className="text-primary-600" />
-            Don de sang · Guide Officiel & Indépendant
-          </span>
+        <div className="lg:col-span-6 flex flex-col gap-5 sm:gap-7">
+          {/* Titre style premium avec typographie mixte */}
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-[3.35rem] xl:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
+            Votre sang <br />
+            <span className="text-primary-500 font-serif italic font-normal">
+              sauve des vies.
+            </span>{" "}
+            <br />
+            Chaque jour.
+          </h1>
 
-          <TypewriterText
-            as="h1"
-            text={"Avant de donner,\nsachez tout."}
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-neutral-900 leading-[1.08] mb-6"
-          />
-
-          <p
-            className="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-xl mb-8 opacity-0 animate-fade-up"
-            style={{ animationDelay: "0.8s" }}
-          >
-            Vous pensez au don de sang, mais vous avez des hésitations ?
-            <strong> LifeSave</strong> déconstruit les idées reçues pour vous guider en toute sérénité : éligibilité, déroulement et centres de don près de chez vous.
+          {/* Texte de présentation ultra-lisible */}
+          <p className="text-sm xs:text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-xl">
+            Au Bénin, des centaines de poches de sang sont nécessaires quotidiennement.
+            Aucun substitut artificiel ne peut remplacer le sang humain.
+            Êtes-vous prêt à faire la différence ?
           </p>
 
-          {/* Boutons d'action dynamiques */}
-          <div
-            className="flex flex-wrap items-center gap-4 mb-10 opacity-0 animate-fade-up"
-            style={{ animationDelay: "1s" }}
-          >
+          {/* Boutons d'action pillules - TAILLE CONSERVÉE */}
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Button
               variant="glow"
               size="lg"
               onClick={() => scrollToSection("#eligibilite")}
+              className="bg-primary-500 hover:bg-primary-600 text-white rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 shadow-lg shadow-primary-500/30 border-none font-bold text-xs sm:text-sm lg:text-base"
             >
-              <span>Tester mon éligibilité</span>
-              <ArrowRight size={18} />
+              <span className="whitespace-nowrap">Vérifier mon éligibilité</span>
+              <ArrowRight size={16} />
             </Button>
 
             <Button
-              variant="outline"
+              variant="glass"
               size="lg"
               onClick={() => scrollToSection("#deroulement")}
+              className="bg-white/10 hover:bg-white/20 text-white border-white/20 rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 font-semibold backdrop-blur-md text-xs sm:text-sm lg:text-base"
             >
-              <span>Voir le déroulement</span>
+              <span className="whitespace-nowrap">Comment ça se passe ?</span>
             </Button>
-          </div>
-
-          {/* Cartes d'information avec micro-interactions */}
-          <div ref={cardsRef} className="grid grid-cols-2 gap-4">
-            {INFO_CARDS.map(({ icon: Icon, label, description, href }, index) => (
-              <div
-                key={label}
-                onClick={() => scrollToSection(href)}
-                style={{ transitionDelay: `${index * 80}ms` }}
-                className={`group flex flex-col gap-2 bg-white/90 backdrop-blur-sm rounded-2xl border border-neutral-200/70 p-4 sm:p-5 shadow-sm hover:shadow-md hover:border-primary-300 hover:-translate-y-1 transition-all duration-300 cursor-pointer ${
-                  cardsInView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-xl bg-primary-50 text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300">
-                    <Icon size={20} />
-                  </div>
-                  <span className="text-sm font-bold text-neutral-900 group-hover:text-primary-700 transition-colors">
-                    {label}
-                  </span>
-                </div>
-                <p className="text-xs text-neutral-500 pl-1">
-                  {description}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
 
-        {/* Colonne vidéo / visuelle élargie (6 cols) */}
-        <div
-          className="lg:col-span-6 relative opacity-0 animate-fade-up"
-          style={{ animationDelay: "0.4s" }}
-        >
-          <HeroVideo />
-
-          {/* Badge flottant d'impact */}
-          <div className="absolute -bottom-6 -left-2 sm:left-6 max-w-[270px] rounded-2xl bg-white/95 backdrop-blur-md shadow-2xl border border-neutral-200/80 p-4 hidden sm:block">
-            <div className="flex items-center gap-2.5 mb-1">
-              <span className="w-3 h-3 rounded-full bg-primary-600 animate-ping" />
-              <p className="text-xl font-black text-primary-700">
+        {/* Colonne droite : Carte en verre sombre avec vidéo & repères rapides */}
+        <div className="lg:col-span-6 relative mt-6 sm:mt-8 lg:mt-0">
+          <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 shadow-2xl space-y-4 sm:space-y-5">
+            <div className="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 px-1">
+              <span className="text-[10px] xs:text-xs font-bold uppercase tracking-wider text-slate-400">
+                Informations & Vidéo
+              </span>
+              <span className="text-[10px] xs:text-xs text-primary-400 font-semibold whitespace-nowrap">
                 1 don = 3 vies
-              </p>
+              </span>
             </div>
-            <p className="text-xs text-neutral-600 leading-snug">
-              Un seul don permet d'aider jusqu'à 3 patients (globules rouges, plasma, plaquettes).
-            </p>
+
+            <HeroVideo />
+
+            {/* CARDS - Légèrement agrandies sur grand écran */}
+            <div ref={cardsRef} className="grid grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
+              {INFO_CARDS.map(({ icon: Icon, label, description, href }, index) => (
+                <div
+                  key={label}
+                  onClick={() => scrollToSection(href)}
+                  style={{ transitionDelay: `${index * 70}ms` }}
+                  className={`group flex flex-col gap-1 bg-slate-950/50 backdrop-blur-md rounded-xl sm:rounded-2xl border border-white/10 p-2.5 sm:p-3.5 lg:p-4 hover:border-primary-500/50 hover:bg-slate-900/80 transition-all duration-300 cursor-pointer ${cardsInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                    }`}
+                >
+                  <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-2.5">
+                    <div className="p-1 sm:p-1.5 lg:p-2 rounded-lg bg-primary-500/10 text-primary-400 group-hover:bg-primary-500 group-hover:text-white transition-colors duration-300 flex-shrink-0">
+                      <Icon size={14} className="sm:size-[15px] lg:size-[17px]" />
+                    </div>
+                    <span className="text-[10px] xs:text-xs sm:text-sm lg:text-[15px] font-bold text-white group-hover:text-primary-400 transition-colors leading-tight">
+                      {label}
+                    </span>
+                  </div>
+                  <p className="text-[10px] xs:text-[11px] sm:text-xs lg:text-[13px] text-slate-400 leading-snug pl-0.5 lg:pl-1">
+                    {description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Halo lumineux décoratif en arrière-plan */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-300/15 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary-300/15 rounded-full blur-3xl pointer-events-none -z-10" />
     </section>
   );
 }

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 
-export default function useInView({ threshold = 0.2, once = true } = {}) {
+export function useInView({ threshold = 0.2, once = true } = {}) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
 
@@ -27,3 +27,5 @@ export default function useInView({ threshold = 0.2, once = true } = {}) {
 
   return [ref, inView];
 }
+
+export default useInView;

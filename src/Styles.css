@@ -2,13 +2,13 @@
 
 @theme {
   /* Primary */
-  --color-primary-50: #FFEBEE;
-  --color-primary-100: #FFCDD2;
-  --color-primary-200: #EF9A9A;
-  --color-primary-300: #E57373;
-  --color-primary-400: #EF5350;
-  --color-primary-500: #E53935;
-  --color-primary-600: #D32F2F;
+  --color-primary-50: #FFF0F2;
+  --color-primary-100: #FFE0E4;
+  --color-primary-200: #FFC2C9;
+  --color-primary-300: #FFA0AC;
+  --color-primary-400: #FF7C8E;
+  --color-primary-500: #F0696A;
+  --color-primary-600: #E05253;
   --color-primary-700: #C62828;
   --color-primary-800: #B71C1C;
   --color-primary-900: #8B1A1A;
@@ -149,11 +149,34 @@
     transform: translateY(-100%);
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
   }
 }
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(198, 40, 40, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(198, 40, 40, 0.65);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
 
 /* Styles globaux */
 body {
@@ -196,6 +219,27 @@ body {
 
 /* Variables de marges globales (Modifiables de façon centralisée) */
 :root {
+  /* Palette principale */
+  --primary: #F0696A;        /* Rouge corail vif, chaleureux */
+  --primary-light: #FF7C8E;  /* Rouge clair pour hover */
+  --primary-dark: #E05253;   /* Rouge profond */
+
+  --secondary: #1565C0;      /* Bleu confiance */
+  --secondary-light: #42A5F5;
+
+  --neutral: #F5F5F5;        /* Gris très clair */
+  --neutral-dark: #616161;   /* Gris moyen */
+  --text-primary: #212121;   /* Presque noir */
+  --text-secondary: #757575;
+
+  --accent: #FF6F00;         /* Orange ambré pour alertes */
+  --success: #2E7D32;        /* Vert pour éligible */
+  --error: #C62828;          /* Rouge pour non-éligible */
+
+  --background: #FAFAFA;
+  --card: #FFFFFF;
+  --shadow: rgba(0,0,0,0.1);
+
   --container-max-width: 85rem; /* 1360px - mise en page large, aérée et moderne */
   --container-padding-x: 1.5rem;
   --container-padding-y: 2rem;

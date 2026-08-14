@@ -53,7 +53,7 @@ export default function WhyGive() {
         {/* En-tête de section avec typographie éditoriale */}
         <div className="max-w-3xl mb-14">
           <span className="inline-block text-xs font-bold tracking-widest uppercase text-primary-700 bg-primary-100/70 border border-primary-200/80 rounded-full px-3.5 py-1 mb-4">
-            C1 · Pourquoi donner
+            Pourquoi donner ??
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-4">
             Le sang ne se fabrique pas. <br className="hidden sm:inline" />
