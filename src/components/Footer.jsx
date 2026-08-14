@@ -1,94 +1,107 @@
 import React from "react";
 import Logo from "./Logo";
-import { Heart, ExternalLink } from "lucide-react";
+import {
+  Heart,
+  Phone,
+  Mail,
+  MapPin,
+  ChevronRight,
+  ExternalLink,
+} from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-900 text-white pt-16 pb-12 border-t border-neutral-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-          
-          {/* Logo & Slogan */}
-          <div className="md:col-span-2 space-y-4">
-            <a href="#" className="flex items-center gap-3">
+    <footer className="bg-[#141312] text-white pt-12 pb-8 border-t border-neutral-800 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 items-start">
+          {/* Col 1: Brand & Slogan */}
+          <div className="space-y-3">
+            <a href="#" className="flex items-center gap-3 group">
               <Logo size="md" />
-              <span className="text-2xl font-black tracking-tight text-white">
-                Life<span className="text-primary-400">Save</span>
+              <span className="text-2xl font-black tracking-tight text-white group-hover:text-primary-400 transition-colors">
+                Life<span className="text-primary-500">Save</span>
               </span>
             </a>
-            <p className="text-sm text-neutral-400 leading-relaxed max-w-sm">
-              Plateforme d'information et de sensibilisation au don de sang. Faciliter l'accès aux centres et déconstruire les tabous pour sauver plus de vies.
+            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-sm">
+              Plateforme d'information, de simulation d'éligibilité et de cartographie des centres de don de sang au Bénin.
             </p>
           </div>
 
-          {/* Navigation Rapide */}
+          {/* Col 2: Navigation rapide */}
           <div>
-            <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-4">
-              Sections
+            <h4 className="font-extrabold text-white text-xs uppercase tracking-widest mb-3 text-primary-400">
+              Navigation
             </h4>
-            <ul className="space-y-2.5 text-sm text-neutral-400">
-              <li>
-                <a href="#pourquoi" className="hover:text-white transition-colors">
-                  Pourquoi donner
+            <ul className="grid grid-cols-2 gap-2 text-xs text-neutral-400 font-medium">
+              {[
+                { name: "Pourquoi donner ?", href: "#pourquoi" },
+                { name: "Test d'éligibilité", href: "#eligibilite" },
+                { name: "Déroulement", href: "#deroulement" },
+                { name: "Où donner", href: "#ou-donner" },
+                { name: "Réserves", href: "#reserves" },
+                { name: "FAQ", href: "#faq" },
+              ].map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className="hover:text-white transition-colors inline-flex items-center gap-1"
+                  >
+                    <ChevronRight size={12} className="text-primary-500" />
+                    <span>{item.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 3: Contact & Urgences ANTS */}
+          <div>
+            <h4 className="font-extrabold text-white text-xs uppercase tracking-widest mb-3 text-primary-400">
+              Contact & Urgences
+            </h4>
+            <ul className="space-y-2 text-xs text-neutral-400">
+              <li className="flex items-center gap-2">
+                <MapPin size={14} className="text-primary-500 flex-shrink-0" />
+                <span>ANTS Bénin — Quartier Saint-Michel, Cotonou</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone size={14} className="text-emerald-400 flex-shrink-0" />
+                <a
+                  href="tel:+2290121320435"
+                  className="hover:text-white font-bold text-neutral-200 transition-colors"
+                >
+                  +229 01 21 32 04 35
                 </a>
               </li>
-              <li>
-                <a href="#eligibilite" className="hover:text-white transition-colors">
-                  Test d'éligibilité
-                </a>
-              </li>
-              <li>
-                <a href="#deroulement" className="hover:text-white transition-colors">
-                  Déroulement
-                </a>
-              </li>
-              <li>
-                <a href="#ou-donner" className="hover:text-white transition-colors">
-                  Où donner (8 centres)
-                </a>
-              </li>
-              <li>
-                <a href="#reserves" className="hover:text-white transition-colors">
-                  Réserves de sang
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-white transition-colors">
-                  FAQ
+              <li className="flex items-center gap-2">
+                <Mail size={14} className="text-primary-400 flex-shrink-0" />
+                <a
+                  href="mailto:contact@lifesave.bj"
+                  className="hover:text-white transition-colors"
+                >
+                  contact@lifesave.bj
                 </a>
               </li>
             </ul>
           </div>
-
-          {/* Partenaires & Crédits */}
-          <div>
-            <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-4">
-              Partenaires & Challenge
-            </h4>
-            <ul className="space-y-2.5 text-sm text-neutral-400">
-              <li className="font-medium text-white">Figma to Code Challenge — Édition 4</li>
-              <li>
-                <a href="https://digishub.bj" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors inline-flex items-center gap-1">
-                  <span>Digis Hub</span>
-                  <ExternalLink size={12} />
-                </a>
-              </li>
-              <li>
-                <a href="https://chariow.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors inline-flex items-center gap-1">
-                  <span>Chariow</span>
-                  <ExternalLink size={12} />
-                </a>
-              </li>
-            </ul>
-          </div>
-
         </div>
 
-        {/* Barre inférieure */}
-        <div className="pt-8 border-t border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
-          <p>© 2026 LifeSave / HemoLink. Tous droits réservés.</p>
-          <p className="flex items-center gap-1">
-            Conçu avec <Heart size={12} className="text-primary-500 fill-primary-500" /> pour le Don de Sang
+        {/* Ligne inférieure simplifiée et épurée avec lien Portfolio */}
+        <div className="pt-6 border-t border-neutral-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-400">
+          <p>© 2026 LifeSave. Tous droits réservés.</p>
+          <p className="flex items-center gap-1.5 font-medium text-neutral-300">
+            <span>Conçu et développé avec passion par</span>
+            <a
+              href="https://portofoliolarissakoussey.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-400 hover:text-primary-300 font-extrabold underline underline-offset-4 inline-flex items-center gap-1 transition-colors"
+              title="Visiter le portfolio de LARISSA KOUSSEY"
+            >
+              <span>LARISSA KOUSSEY</span>
+              <ExternalLink size={12} className="text-primary-400" />
+            </a>
+            <Heart size={13} className="text-primary-500 fill-primary-500 ml-0.5 animate-pulse" />
           </p>
         </div>
       </div>

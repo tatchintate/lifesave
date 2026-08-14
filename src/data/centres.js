@@ -20,7 +20,10 @@ export const centres = [
     estOuvert: true,
     typesDeDon: ["Sang total", "Plasma"],
     modalitesAccueil: "Accès libre / Sur rendez-vous",
-    coordonnees: { lat: 6.3644, lng: 2.4225 }
+    coordonnees: { lat: 6.3644, lng: 2.4225 },
+    isUrgent: true,
+    isCollecteMobile: false,
+    besoinUrgentGroupes: ["O-", "A+", "B-"]
   },
   {
     id: 2,
@@ -43,7 +46,10 @@ export const centres = [
     estOuvert: true,
     typesDeDon: ["Sang total"],
     modalitesAccueil: "Accès libre",
-    coordonnees: { lat: 6.4969, lng: 2.6288 }
+    coordonnees: { lat: 6.4969, lng: 2.6288 },
+    isUrgent: false,
+    isCollecteMobile: false,
+    besoinUrgentGroupes: []
   },
   {
     id: 3,
@@ -66,7 +72,10 @@ export const centres = [
     estOuvert: true,
     typesDeDon: ["Sang total"],
     modalitesAccueil: "Accès libre",
-    coordonnees: { lat: 9.3361, lng: 2.6322 }
+    coordonnees: { lat: 9.3361, lng: 2.6322 },
+    isUrgent: true,
+    isCollecteMobile: false,
+    besoinUrgentGroupes: ["O-", "O+", "A-"]
   },
   {
     id: 4,
@@ -89,12 +98,15 @@ export const centres = [
     estOuvert: true,
     typesDeDon: ["Sang total"],
     modalitesAccueil: "Accès libre",
-    coordonnees: { lat: 7.1852, lng: 1.9924 }
+    coordonnees: { lat: 7.1852, lng: 1.9924 },
+    isUrgent: false,
+    isCollecteMobile: false,
+    besoinUrgentGroupes: []
   },
   {
     id: 5,
     nom: "Banque de Sang CNHU-HKM",
-    nature: "Poste de Transfusion Hospitalier",
+    nature: "Poste de Transfusion Hospitalier (24h/24)",
     adresse: "Avenue Jean-Paul II, Quartier Cadjèhoun",
     ville: "Cotonou",
     codePostal: "01 BP 321",
@@ -110,15 +122,18 @@ export const centres = [
       dimanche: "00:00-23:59"
     },
     estOuvert: true,
-    typesDeDon: ["Sang total", "Plaquettes"],
-    modalitesAccueil: "Urgence / Accès libre",
-    coordonnees: { lat: 6.3575, lng: 2.4119 }
+    typesDeDon: ["Sang total", "Plaquettes", "Plasma"],
+    modalitesAccueil: "Urgence 24h/7d / Accès libre",
+    coordonnees: { lat: 6.3575, lng: 2.4119 },
+    isUrgent: true,
+    isCollecteMobile: false,
+    besoinUrgentGroupes: ["Tous groupes", "O-", "B+"]
   },
   {
     id: 6,
-    nom: "Poste de Transfusion - Hôpital de Zone de Calavi",
-    nature: "Poste de Transfusion Périphérique",
-    adresse: "Quartier Togoudo, Route de Grand-Popo",
+    nom: "Collecte Mobile Universitaire UAC",
+    nature: "Camion de Collecte Mobile Éphémère",
+    adresse: "Esplanade Campus Université d'Abomey-Calavi",
     ville: "Abomey-Calavi",
     codePostal: "05 BP 144",
     telephone: "+229 21 36 00 24",
@@ -134,8 +149,11 @@ export const centres = [
     },
     estOuvert: true,
     typesDeDon: ["Sang total"],
-    modalitesAccueil: "Accès libre",
-    coordonnees: { lat: 6.4482, lng: 2.3524 }
+    modalitesAccueil: "Accès libre sans RDV",
+    coordonnees: { lat: 6.4482, lng: 2.3524 },
+    isUrgent: true,
+    isCollecteMobile: true,
+    besoinUrgentGroupes: ["O-", "A+"]
   },
   {
     id: 7,
@@ -158,7 +176,10 @@ export const centres = [
     estOuvert: true,
     typesDeDon: ["Sang total"],
     modalitesAccueil: "Accès libre",
-    coordonnees: { lat: 6.6384, lng: 1.7167 }
+    coordonnees: { lat: 6.6384, lng: 1.7167 },
+    isUrgent: false,
+    isCollecteMobile: false,
+    besoinUrgentGroupes: []
   },
   {
     id: 8,
@@ -181,6 +202,9 @@ export const centres = [
     estOuvert: true,
     typesDeDon: ["Sang total"],
     modalitesAccueil: "Accès libre",
-    coordonnees: { lat: 10.3042, lng: 1.3781 }
+    coordonnees: { lat: 10.3042, lng: 1.3781 },
+    isUrgent: false,
+    isCollecteMobile: false,
+    besoinUrgentGroupes: []
   }
 ];
