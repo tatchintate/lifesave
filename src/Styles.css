@@ -87,6 +87,38 @@
   }
 }
 
+@keyframes floatBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.animate-float-bounce {
+  animation: floatBounce 3.5s ease-in-out infinite;
+}
+
+@keyframes buttonVibrate {
+  0%, 80%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  85% {
+    transform: scale(1.04) rotate(-1.5deg);
+  }
+  90% {
+    transform: scale(1.04) rotate(1.5deg);
+  }
+  95% {
+    transform: scale(1.04) rotate(-1deg);
+  }
+}
+
+.animate-vibrate {
+  animation: buttonVibrate 3s ease-in-out infinite;
+}
+
 @keyframes fillCircle {
   from {
     opacity: 0;
