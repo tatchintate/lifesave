@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Play, ArrowRight, Activity, Clock, Heart, MapPin } from "lucide-react";
 import { Button } from "./ui/Button";
 import { useInView } from "../hooks/useInView";
-import heroImg from "../assets/hero.jpg";
+import heroImg from "../assets/hero.png";
 
 const VIDEO_ID = "rFmuV3urCKs";
 const VIDEO_TITLE = "Vidéo explicative : Pourquoi et comment donner son sang ?";

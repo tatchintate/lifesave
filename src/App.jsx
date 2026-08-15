@@ -1,13 +1,14 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import Reserves from "./components/Reserves";
 import WhyGive from "./components/WhyGive";
 import Eligibility from "./components/Eligibility";
 import ProcessAndPrep from "./components/ProcessAndPrep";
 import Centers from "./components/Centers";
-import Reserves from "./components/Reserves";
 import Faq from "./components/Faq";
 import Footer from "./components/Footer";
+import MobileStickyCta from "./components/MobileStickyCta";
 import "./Styles.css";
 
 function App() {
@@ -17,13 +18,14 @@ function App() {
       <main>
         <Hero />
         <WhyGive />
-        <Eligibility />
-        <ProcessAndPrep />
-        <Centers />
         <Reserves />
+        <ProcessAndPrep />
+        <Eligibility />
+        <Centers />
         <Faq />
       </main>
       <Footer />
+      <MobileStickyCta />
     </div>
   );
 }

@@ -13,6 +13,7 @@ import {
   CheckCircle2,
   LocateFixed,
   Loader2,
+  ChevronDown,
 } from "lucide-react";
 import { centres } from "../data/centres";
 import { useInView } from "../hooks/useInView";
@@ -92,6 +93,7 @@ export default function Centers() {
   const [selectedStatus, setSelectedStatus] = useState("Tous");
   const [onlyUrgent, setOnlyUrgent] = useState(false);
   const [onlyMobile, setOnlyMobile] = useState(false);
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
   // Géolocalisation
   const [userLocation, setUserLocation] = useState(null);
@@ -254,9 +256,27 @@ export default function Centers() {
         </div>
 
         {/* Disposition Principale : Sidebar Filtres + Grille Résultats */}
+        {/* Toggle Filtres sur Mobile (Task 3: Accordéon escamotable sur mobile) */}
+        <div className="lg:hidden col-span-1 mb-2">
+          <button
+            type="button"
+            onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}
+            className="w-full flex items-center justify-between bg-white px-4 py-3.5 rounded-2xl border border-neutral-200/80 shadow-sm font-bold text-xs text-neutral-800 active:bg-neutral-50 transition-colors"
+          >
+            <div className="flex items-center gap-2">
+              <Filter size={16} className="text-rose-600" />
+              <span>Filtres de recherche</span>
+              {(selectedCity !== "Toutes" || selectedType !== "Tous" || selectedStatus !== "Tous" || onlyUrgent || onlyMobile) && (
+                <span className="bg-rose-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">Filtre actif</span>
+              )}
+            </div>
+            <ChevronDown size={16} className={`text-neutral-500 transition-transform duration-300 ${isMobileFilterOpen ? "rotate-180" : ""}`} />
+          </button>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
           {/* ================= PANNEAU LATÉRAL GAUCHE ================= */}
-          <aside className="lg:col-span-1 bg-white rounded-2xl p-5 border border-neutral-200/80 shadow-sm space-y-5 sticky top-24">
+          <aside className={`lg:col-span-1 bg-white rounded-2xl p-5 border border-neutral-200/80 shadow-sm space-y-5 sticky top-24 ${isMobileFilterOpen ? "block" : "hidden lg:block"}`}>
             <div className="flex items-center justify-between border-b border-neutral-100 pb-3">
               <div className="flex items-center gap-2 font-bold text-neutral-900 text-sm">
                 <Filter size={16} className="text-primary-600" />

@@ -115,6 +115,7 @@ const PREPARATION_CARDS = [
 export default function ProcessAndPrep() {
   const [sectionRef, inView] = useInView({ threshold: 0.1 });
   const [activeStepModal, setActiveStepModal] = useState(null);
+  const [activePrepTab, setActivePrepTab] = useState(0);
 
   return (
     <section
@@ -240,42 +241,95 @@ export default function ProcessAndPrep() {
             </span>
           </div>
 
-          {/* 3 Colonnes : Avant, Pendant, Après */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-            {PREPARATION_CARDS.map(({ phase, icon: Icon, badgeColor, iconColor, bullets }) => (
-              <div
+          {/* Onglets Mobiles (Task 5: Réduction de la fatigue de défilement mobile) */}
+          <div className="md:hidden flex rounded-2xl bg-[#242220] p-1.5 border border-neutral-800 mb-6 relative z-10">
+            {PREPARATION_CARDS.map(({ phase }, idx) => (
+              <button
                 key={phase}
-                className="bg-[#242220] rounded-2xl p-6 border border-neutral-800/90 hover:border-neutral-700 transition-all duration-300 space-y-4 group"
+                type="button"
+                onClick={() => setActivePrepTab(idx)}
+                className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all text-center ${activePrepTab === idx
+                    ? "bg-rose-600 text-white shadow-md font-extrabold"
+                    : "text-neutral-400 hover:text-white"
+                  }`}
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2.5 rounded-xl border ${iconColor} transition-transform group-hover:scale-110 duration-300`}>
-                      <Icon size={20} />
-                    </div>
-                    <h4 className="text-lg font-bold text-white">
-                      {phase}
-                    </h4>
-                  </div>
-                  <span className={`text-[11px] font-extrabold px-2.5 py-0.5 rounded-full border ${badgeColor}`}>
-                    Conseils
-                  </span>
-                </div>
-
-                <ul className="space-y-3">
-                  {bullets.map((bullet, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-300 leading-relaxed"
-                    >
-                      <div className="w-5 h-5 rounded-full bg-emerald-950/80 border border-emerald-600/60 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check size={13} className="text-emerald-400" />
-                      </div>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                {phase.replace(" le don", "")}
+              </button>
             ))}
+          </div>
+
+          {/* Affichage des cartes : Onglet unique sur mobile, 3 Colonnes sur Desktop */}
+          <div className="relative z-10">
+            {/* Version Mobile : Seule la carte active est affichée */}
+            <div className="block md:hidden">
+              {(() => {
+                const { phase, icon: Icon, badgeColor, iconColor, bullets } = PREPARATION_CARDS[activePrepTab];
+                return (
+                  <div className="bg-[#242220] rounded-2xl p-6 border border-neutral-800/90 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className={`p-2.5 rounded-xl border ${iconColor}`}>
+                          <Icon size={20} />
+                        </div>
+                        <h4 className="text-lg font-bold text-white">{phase}</h4>
+                      </div>
+                      <span className={`text-[11px] font-extrabold px-2.5 py-0.5 rounded-full border ${badgeColor}`}>
+                        Conseils
+                      </span>
+                    </div>
+
+                    <ul className="space-y-3">
+                      {bullets.map((bullet, i) => (
+                        <li key={i} className="flex items-start gap-2.5 text-xs text-neutral-300 leading-relaxed">
+                          <div className="w-5 h-5 rounded-full bg-emerald-950/80 border border-emerald-600/60 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <Check size={13} className="text-emerald-400" />
+                          </div>
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })()}
+            </div>
+
+            {/* Version Desktop : 3 Colonnes côte à côte */}
+            <div className="hidden md:grid md:grid-cols-3 gap-6">
+              {PREPARATION_CARDS.map(({ phase, icon: Icon, badgeColor, iconColor, bullets }) => (
+                <div
+                  key={phase}
+                  className="bg-[#242220] rounded-2xl p-6 border border-neutral-800/90 hover:border-neutral-700 transition-all duration-300 space-y-4 group"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className={`p-2.5 rounded-xl border ${iconColor} transition-transform group-hover:scale-110 duration-300`}>
+                        <Icon size={20} />
+                      </div>
+                      <h4 className="text-lg font-bold text-white">
+                        {phase}
+                      </h4>
+                    </div>
+                    <span className={`text-[11px] font-extrabold px-2.5 py-0.5 rounded-full border ${badgeColor}`}>
+                      Conseils
+                    </span>
+                  </div>
+
+                  <ul className="space-y-3">
+                    {bullets.map((bullet, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-300 leading-relaxed"
+                      >
+                        <div className="w-5 h-5 rounded-full bg-emerald-950/80 border border-emerald-600/60 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <Check size={13} className="text-emerald-400" />
+                        </div>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Note de bas de carte */}

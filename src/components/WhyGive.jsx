@@ -46,9 +46,8 @@ export default function WhyGive() {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         {/* En-tête de section avec votre design exact */}
         <div
-          className={`flex flex-col mb-6 transition-all duration-700 ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
+          className={`flex flex-col mb-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
         >
           <span className="inline-block text-sm font-bold tracking-widest uppercase text-primary-700 py-1">
             Pourquoi donner ?
@@ -60,9 +59,8 @@ export default function WhyGive() {
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           {/* Colonne gauche */}
           <div
-            className={`lg:col-span-6 flex flex-col justify-between transition-all duration-700 delay-100 ${
-              inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
+            className={`lg:col-span-6 flex flex-col justify-between transition-all duration-700 delay-100 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
           >
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-4">
@@ -84,11 +82,10 @@ export default function WhyGive() {
                     <li
                       key={title}
                       style={{ transitionDelay: `${(index + 1) * 120}ms` }}
-                      className={`group hover:shadow-xl hover:-translate-y-0.5 transition-all duration-500 rounded-2xl px-4 py-4 sm:px-5 sm:py-5 bg-white border border-neutral-200/80 ${
-                        inView
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 translate-y-4"
-                      }`}
+                      className={`group hover:shadow-xl hover:-translate-y-0.5 transition-all duration-500 rounded-2xl px-4 py-4 sm:px-5 sm:py-5 bg-white border border-neutral-200/80 ${inView
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-4"
+                        }`}
                     >
                       <div className="flex items-start gap-4">
                         {/* Cercle numéroté coloré */}
@@ -116,9 +113,8 @@ export default function WhyGive() {
 
           {/* Colonne droite : Image unique blood.jpg */}
           <div
-            className={`lg:col-span-6 flex flex-col h-full min-h-[400px] transition-all duration-700 delay-300 ${
-              inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className={`lg:col-span-6 flex flex-col h-full min-h-[400px] transition-all duration-700 delay-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
           >
             <div className="relative w-full h-full min-h-[440px] rounded-3xl overflow-hidden shadow-lg border border-neutral-200/80 group">
               <img

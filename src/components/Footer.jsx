@@ -8,7 +8,7 @@ import {
   ChevronRight,
   ExternalLink,
 } from "lucide-react";
-import heroImg from "../assets/hero.jpg";
+import heroImg from "../assets/hero.png";
 
 export default function Footer() {
   return (
