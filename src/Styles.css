@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+
 @theme {
   /* Primary Brand Palette - Deep Sapphire & Ocean Cerulean Blue */
   --color-primary-50: #EFF6FF;

@@ -42,21 +42,21 @@ export default function WhyGive() {
     <section
       ref={sectionRef}
       id="pourquoi"
-      className="py-16 sm:py-20 bg-surface/40 border-t border-neutral-200/60"
+      className="py-16 sm:py-20 bg-surface/40 dark:bg-slate-900/60 border-t border-neutral-200/60 dark:border-slate-800 transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        {/* En-tête de section avec votre design exact */}
+        {/* En-tête de section */}
         <div
           className={`flex flex-col mb-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
         >
-          <span className="inline-block text-sm font-bold tracking-widest uppercase text-primary-700 py-1">
+          <span className="inline-block text-sm font-bold tracking-widest uppercase text-primary-700 dark:text-primary-400 py-1">
             Pourquoi donner ?
           </span>
-          <span className="bg-primary-100/70 w-10 border border-primary-200/80 rounded-full px-1 py-0.5 mb-4"></span>
+          <span className="bg-primary-100/70 dark:bg-primary-950/60 w-10 border border-primary-200/80 dark:border-primary-800 rounded-full px-1 py-0.5 mb-4"></span>
         </div>
 
-        {/* Sous En-tête avec 2 colonnes de même hauteur */}
+        {/* Sous En-tête avec 2 colonnes */}
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           {/* Colonne gauche */}
           <div
@@ -64,18 +64,18 @@ export default function WhyGive() {
               }`}
           >
             <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight leading-tight mb-4">
                 Le sang ne se fabrique pas.
-                <span className="text-rose-600"> Il se donne.</span>
+                <span className="text-rose-600 dark:text-rose-500"> Il se donne.</span>
               </h2>
-              <p className="text-base text-justify sm:text-lg text-neutral-600 leading-relaxed">
+              <p className="text-base text-justify sm:text-lg text-neutral-600 dark:text-slate-300 leading-relaxed">
                 Aucun laboratoire ne sait produire du sang humain. Chaque poche
                 transfusée vient d'une personne qui a pris 45 minutes de sa
                 journée. C'est le seul circuit d'approvisionnement qui existe.
               </p>
             </div>
 
-            {/* Liste des raisons en cascade */}
+            {/* Liste des raisons */}
             <div className="space-y-4 mt-8">
               <ul className="space-y-4">
                 {REASONS.map(
@@ -83,7 +83,7 @@ export default function WhyGive() {
                     <li
                       key={title}
                       style={{ transitionDelay: `${(index + 1) * 120}ms` }}
-                      className={`group hover:shadow-xl hover:-translate-y-0.5 transition-all duration-500 rounded-2xl px-4 py-4 sm:px-5 sm:py-5 bg-white border border-neutral-200/80 ${inView
+                      className={`group hover:shadow-xl hover:-translate-y-0.5 transition-all duration-500 rounded-2xl px-4 py-4 sm:px-5 sm:py-5 bg-white dark:bg-slate-800/90 border border-neutral-200/80 dark:border-slate-700/80 ${inView
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-4"
                         }`}
@@ -97,10 +97,10 @@ export default function WhyGive() {
                         </div>
 
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-sm sm:text-base font-bold text-neutral-900 group-hover:text-primary-700 transition-colors mb-1">
+                          <h3 className="text-sm sm:text-base font-bold text-neutral-900 dark:text-white group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors mb-1">
                             {title}
                           </h3>
-                          <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                          <p className="text-xs sm:text-sm text-neutral-600 dark:text-slate-300 leading-relaxed">
                             {description}
                           </p>
                         </div>
@@ -111,6 +111,7 @@ export default function WhyGive() {
               </ul>
             </div>
           </div>
+
 
           {/* Colonne droite : Image unique blood.jpg */}
           <div

@@ -121,19 +121,19 @@ export default function ProcessAndPrep() {
     <section
       ref={sectionRef}
       id="deroulement"
-      className="py-16 sm:py-24 bg-white border-t border-neutral-200/80 relative overflow-hidden"
+      className="py-16 sm:py-24 bg-white dark:bg-slate-950 border-t border-neutral-200/80 dark:border-slate-800 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
-        {/* En-tête de section centré et aligné */}
+        {/* En-tête de section */}
         <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-12 sm:mb-16 gap-3">
-          <span className="inline-block text-xs sm:text-sm font-bold tracking-widest uppercase text-primary-700 py-1">
+          <span className="inline-block text-sm font-bold tracking-widest uppercase text-primary-700 dark:text-primary-400 py-1">
             Déroulement et préparation
           </span>
-          <span className="bg-primary-100/70 w-10 border border-primary-200/80 rounded-full px-1 py-0.5 mb-2" />
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight">
-            45 minutes, <span className="text-rose-600">dont 10 de prélèvement.</span>
+          <span className="bg-primary-100/70 dark:bg-primary-950/60 w-10 border border-primary-200/80 dark:border-primary-800 rounded-full px-1 py-0.5 mb-2" />
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight leading-tight">
+            45 minutes, <span className="text-rose-600 dark:text-rose-500">dont 10 de prélèvement.</span>
           </h2>
-          <p className="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-2xl">
+          <p className="text-base sm:text-lg text-neutral-600 dark:text-slate-300 leading-relaxed max-w-2xl">
             La grande majorité du temps sert à vous accueillir, vous écouter et vous remettre d'aplomb. Voici exactement ce qui vous attend étape par étape.
           </p>
         </div>
@@ -150,8 +150,8 @@ export default function ProcessAndPrep() {
                 }}
                 className={`group relative rounded-3xl p-6 sm:p-7 border cursor-pointer transition-all duration-500 flex flex-col justify-between hover:-translate-y-1.5 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   } ${highlight
-                    ? "bg-gradient-to-b from-white via-rose-50/40 to-white border-rose-500 shadow-md ring-2 ring-rose-500/20 hover:shadow-xl hover:shadow-rose-500/10"
-                    : "bg-white border-neutral-200/80 shadow-xs hover:shadow-md hover:border-primary-300"
+                    ? "bg-gradient-to-b from-white via-rose-50/40 to-white dark:from-slate-800 dark:via-rose-950/20 dark:to-slate-800 border-rose-500 shadow-md ring-2 ring-rose-500/20 hover:shadow-xl hover:shadow-rose-500/10"
+                    : "bg-white dark:bg-slate-800/90 border-neutral-200/80 dark:border-slate-700/80 shadow-xs hover:shadow-md hover:border-primary-300 dark:hover:border-primary-600"
                   }`}
               >
                 {highlight && (
@@ -162,19 +162,19 @@ export default function ProcessAndPrep() {
 
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    {/* Numéro d'étape parfaitement centré dans le cercle */}
+                    {/* Numéro d'étape */}
                     <div
                       className={`w-12 h-12 rounded-2xl flex items-center justify-center text-center font-black text-lg leading-none transition-transform group-hover:scale-105 duration-300 ${highlight
                         ? "bg-rose-600 text-white shadow-md shadow-rose-600/30"
-                        : "bg-neutral-100 text-neutral-800 group-hover:bg-primary-100 group-hover:text-primary-700"
+                        : "bg-neutral-100 dark:bg-slate-700 text-neutral-800 dark:text-slate-100 group-hover:bg-primary-100 dark:group-hover:bg-primary-950 group-hover:text-primary-700 dark:group-hover:text-primary-300"
                         }`}
                     >
                       <span>{num}</span>
                     </div>
                     <span
                       className={`text-xs font-extrabold px-3 py-1 rounded-full ${highlight
-                        ? "bg-rose-100 text-rose-700"
-                        : "bg-neutral-100 text-neutral-600"
+                        ? "bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300"
+                        : "bg-neutral-100 dark:bg-slate-700 text-neutral-600 dark:text-slate-300"
                         }`}
                     >
                       {duration}
@@ -184,20 +184,20 @@ export default function ProcessAndPrep() {
                   <div className="flex items-center gap-2.5 mb-2">
                     <Icon
                       size={22}
-                      className={`transition-colors ${highlight ? "text-rose-600" : "text-neutral-500 group-hover:text-primary-600"
+                      className={`transition-colors ${highlight ? "text-rose-600 dark:text-rose-400" : "text-neutral-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400"
                         }`}
                     />
-                    <h3 className="text-lg font-bold text-neutral-900 group-hover:text-primary-700 transition-colors">
+                    <h3 className="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">
                       {title}
                     </h3>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-4">
+                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-slate-300 leading-relaxed mb-4">
                     {description}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-neutral-100 flex items-center justify-between text-xs font-bold text-primary-600 opacity-90 group-hover:opacity-100">
+                <div className="pt-3 border-t border-neutral-100 dark:border-slate-700/60 flex items-center justify-between text-xs font-bold text-primary-600 dark:text-primary-400 opacity-90 group-hover:opacity-100">
                   <span>En savoir plus</span>
                   <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                 </div>

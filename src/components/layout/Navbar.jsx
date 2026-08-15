@@ -1,8 +1,9 @@
 import { useEffect, useState, useRef } from "react";
-import { MapPin, Menu, X, Heart, Activity, Calendar, HelpCircle, ShieldCheck } from "lucide-react";
+import { MapPin, Menu, X, Heart, Activity, Calendar, HelpCircle, ShieldCheck, Sun, Moon } from "lucide-react";
 import Logo from "../ui/Logo";
 import { Button } from "../ui/Button";
 import { cn } from "../../lib/utils";
+import { useTheme } from "../../context/ThemeContext";
 
 const NAV_LINKS = [
   { href: "#pourquoi", label: "Pourquoi donner", icon: Heart },
@@ -14,6 +15,7 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
+  const { isDark, toggleTheme } = useTheme();
   const [activeHref, setActiveHref] = useState("#pourquoi");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -30,31 +32,30 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
-      // Etat "compact" au scroll
+
+      // Ombre et arrière-plan au scroll
       setScrolled(currentScrollY > 20);
 
-      // Masquage intelligent (Slide UP en descendant, Slide DOWN en remontant)
-      if (currentScrollY > 100) {
-        if (currentScrollY > lastScrollY.current + 5) {
+      // Cache la navbar vers le bas, la réaffiche au scroll vers le haut
+      if (currentScrollY > 150) {
+        if (currentScrollY > lastScrollY.current + 10) {
           setVisible(false);
-        } else if (currentScrollY < lastScrollY.current - 5) {
+        } else if (currentScrollY < lastScrollY.current - 10) {
           setVisible(true);
         }
       } else {
         setVisible(true);
       }
-      
       lastScrollY.current = currentScrollY;
 
-      // Détection exacte de la section active selon l'ordre du DOM
-      const sectionIds = ["pourquoi", "reserves", "deroulement", "eligibilite", "ou-donner", "faq"];
-      const scrollPosition = currentScrollY + 140;
+      // Détection dynamique de la section active
+      const sectionIds = NAV_LINKS.map((link) => link.href.substring(1));
+      const scrollPosition = currentScrollY + 200;
 
       for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sectionIds[i]);
-        if (el) {
-          const top = el.offsetTop;
+        const section = document.getElementById(sectionIds[i]);
+        if (section) {
+          const top = section.offsetTop;
           if (scrollPosition >= top) {
             setActiveHref(`#${sectionIds[i]}`);
             break;
@@ -67,76 +68,62 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 2. Calcul et animation du soulignement glissant (Sliding Pill Indicator)
-  const targetHref = hoveredHref || activeHref;
-
+  // 2. Positionnement dynamique de la pilule d'arrière-plan sur desktop
   useEffect(() => {
-    const activeEl = linkRefs.current[targetHref];
+    const targetHref = hoveredHref || activeHref;
+    const targetEl = linkRefs.current[targetHref];
     const containerEl = navContainerRef.current;
 
-    if (activeEl && containerEl) {
-      const activeRect = activeEl.getBoundingClientRect();
+    if (targetEl && containerEl) {
       const containerRect = containerEl.getBoundingClientRect();
+      const targetRect = targetEl.getBoundingClientRect();
 
       setIndicatorStyle({
-        left: activeRect.left - containerRect.left,
-        width: activeRect.width,
+        left: targetRect.left - containerRect.left,
+        width: targetRect.width,
         opacity: 1,
       });
-    } else {
-      setIndicatorStyle((prev) => ({ ...prev, opacity: 0 }));
     }
-  }, [targetHref]);
+  }, [activeHref, hoveredHref]);
 
-  // Recalcul au redimensionnement de l'écran
-  useEffect(() => {
-    const handleResize = () => {
-      const activeEl = linkRefs.current[targetHref];
-      const containerEl = navContainerRef.current;
-      if (activeEl && containerEl) {
-        const activeRect = activeEl.getBoundingClientRect();
-        const containerRect = containerEl.getBoundingClientRect();
-        setIndicatorStyle({
-          left: activeRect.left - containerRect.left,
-          width: activeRect.width,
-          opacity: 1,
-        });
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [targetHref]);
-
-  // Navigation fluide
+  // Smooth scroll
   const handleLinkClick = (href, e) => {
     e.preventDefault();
-    setActiveHref(href);
     setMobileOpen(false);
+    setActiveHref(href);
 
-    const target = document.querySelector(href);
-    if (target) {
+    const targetId = href.substring(1);
+    const targetEl = document.getElementById(targetId);
+
+    if (targetEl) {
       const offset = 80;
-      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top, behavior: "smooth" });
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = targetEl.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   };
 
   return (
     <header
       className={cn(
-        "fixed top-0 inset-x-0 z-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 transform",
         visible ? "translate-y-0" : "-translate-y-full",
         scrolled
-          ? "bg-white/85 backdrop-blur-xl border-b border-neutral-200/70 shadow-sm py-2.5"
-          : "bg-white/60 backdrop-blur-md border-b border-transparent py-4"
+          ? "bg-white/90 dark:bg-[#0B1528]/90 backdrop-blur-md border-b border-neutral-200/80 dark:border-slate-800 shadow-xs py-3"
+          : "bg-transparent py-4 sm:py-5"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
-        {/* Branding & Logo */}
+        {/* Logo de la marque */}
         <a
           href="#"
-          className="flex items-center gap-2.5 group transition-opacity duration-200 hover:opacity-90"
+          className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded-lg p-1"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -144,8 +131,8 @@ export default function Navbar() {
         >
           <Logo className="transition-transform duration-300 group-hover:scale-105" />
           <span className="text-xl sm:text-2xl font-extrabold tracking-tight">
-            <span className="text-neutral-900">Life</span>
-            <span className="text-primary-600">Save</span>
+            <span className="text-neutral-900 dark:text-white">Life</span>
+            <span className="text-primary-600 dark:text-primary-400">Save</span>
           </span>
         </a>
 
@@ -153,10 +140,10 @@ export default function Navbar() {
         <nav
           ref={navContainerRef}
           onMouseLeave={() => setHoveredHref(null)}
-          className="hidden lg:flex items-center gap-1 relative px-1 py-1 rounded-full bg-neutral-100/60 border border-neutral-200/50 backdrop-blur-sm"
+          className="hidden lg:flex items-center gap-1 relative px-1 py-1 rounded-full bg-neutral-100/60 dark:bg-slate-800/60 border border-neutral-200/50 dark:border-slate-700/50 backdrop-blur-sm"
         >
           <div
-            className="absolute top-1 bottom-1 bg-white rounded-full shadow-sm border border-neutral-200/60 transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none"
+            className="absolute top-1 bottom-1 bg-white dark:bg-slate-700 rounded-full shadow-sm border border-neutral-200/60 dark:border-slate-600 transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none"
             style={{
               left: `${indicatorStyle.left}px`,
               width: `${indicatorStyle.width}px`,
@@ -178,8 +165,8 @@ export default function Navbar() {
                   "relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-colors duration-200",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500",
                   isActive
-                    ? "text-primary-700 font-bold"
-                    : "text-neutral-600 hover:text-neutral-900"
+                    ? "text-primary-700 dark:text-primary-300 font-bold"
+                    : "text-neutral-600 dark:text-slate-300 hover:text-neutral-900 dark:hover:text-white"
                 )}
               >
                 {link.label}
@@ -188,8 +175,19 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Bouton CTA "Trouver un centre" */}
+        {/* Action Desktop : Bouton Theme Switcher + CTA */}
         <div className="hidden md:flex items-center gap-3">
+          {/* Toggle Thème (Clair / Sombre) */}
+          <button
+            onClick={toggleTheme}
+            type="button"
+            className="p-2.5 rounded-full bg-neutral-100 dark:bg-slate-800 text-neutral-700 dark:text-slate-200 border border-neutral-200 dark:border-slate-700 hover:bg-neutral-200 dark:hover:bg-slate-700 transition-all cursor-pointer"
+            title={isDark ? "Passer au mode clair" : "Passer au mode sombre"}
+            aria-label="Basculer le thème"
+          >
+            {isDark ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-slate-700" />}
+          </button>
+
           <Button
             variant="glow"
             size="sm"
@@ -201,26 +199,37 @@ export default function Navbar() {
           </Button>
         </div>
 
-        {/* Bouton Toggle Menu Mobile */}
-        <button
-          type="button"
-          className="lg:hidden p-2 text-neutral-700 rounded-xl hover:bg-neutral-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-          onClick={() => setMobileOpen((open) => !open)}
-          aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
-          aria-expanded={mobileOpen}
-        >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        {/* Bouton Toggle Menu Mobile & Theme Switcher sur Mobile */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <button
+            onClick={toggleTheme}
+            type="button"
+            className="p-2 rounded-xl bg-neutral-100 dark:bg-slate-800 text-neutral-700 dark:text-slate-200 border border-neutral-200 dark:border-slate-700"
+            aria-label="Basculer le thème"
+          >
+            {isDark ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-slate-700" />}
+          </button>
+
+          <button
+            type="button"
+            className="p-2 text-neutral-700 dark:text-slate-200 rounded-xl hover:bg-neutral-100 dark:hover:bg-slate-800 transition-colors focus-visible:outline-none"
+            onClick={() => setMobileOpen((open) => !open)}
+            aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={mobileOpen}
+          >
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       {/* Menu Mobile */}
       <div
         className={cn(
           "lg:hidden overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          mobileOpen ? "max-h-[420px] opacity-100 border-b border-neutral-200/80 shadow-lg" : "max-h-0 opacity-0"
+          mobileOpen ? "max-h-[420px] opacity-100 border-b border-neutral-200/80 dark:border-slate-800 shadow-lg" : "max-h-0 opacity-0"
         )}
       >
-        <div className="bg-white/95 backdrop-blur-xl px-5 pt-3 pb-6 space-y-3">
+        <div className="bg-white/95 dark:bg-[#0B1528]/95 backdrop-blur-xl px-5 pt-3 pb-6 space-y-3">
           <nav className="flex flex-col gap-1">
             {NAV_LINKS.map((link, idx) => {
               const isActive = activeHref === link.href;
@@ -233,9 +242,10 @@ export default function Navbar() {
                   className={cn(
                     "flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200",
                     isActive
-                      ? "bg-primary-50 text-primary-700 font-bold"
-                      : "text-neutral-700 hover:bg-neutral-100/80 hover:text-neutral-900"
+                      ? "bg-primary-50 dark:bg-primary-950/50 text-primary-700 dark:text-primary-300 font-bold"
+                      : "text-neutral-700 dark:text-slate-300 hover:bg-neutral-100/80 dark:hover:bg-slate-800/80 hover:text-neutral-900 dark:hover:text-white"
                   )}
+
                   style={{
                     transitionDelay: mobileOpen ? `${idx * 35}ms` : "0ms",
                     transform: mobileOpen ? "translateY(0)" : "translateY(-6px)",
