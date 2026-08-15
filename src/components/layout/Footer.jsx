@@ -1,5 +1,5 @@
-import React from "react";
-import Logo from "./Logo";
+import Logo from "../ui/Logo";
+
 import {
   Heart,
   Phone,
@@ -8,7 +8,7 @@ import {
   ChevronRight,
   ExternalLink,
 } from "lucide-react";
-import heroImg from "../assets/hero.png";
+import heroImg from "../../assets/hero.png";
 
 export default function Footer() {
   return (

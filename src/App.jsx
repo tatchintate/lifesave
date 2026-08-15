@@ -1,14 +1,14 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Reserves from "./components/Reserves";
-import WhyGive from "./components/WhyGive";
-import Eligibility from "./components/Eligibility";
-import ProcessAndPrep from "./components/ProcessAndPrep";
-import Centers from "./components/Centers";
-import Faq from "./components/Faq";
-import Footer from "./components/Footer";
-import MobileStickyCta from "./components/MobileStickyCta";
+import Navbar from "./components/layout/Navbar";
+import Hero from "./components/sections/Hero";
+import Reserves from "./components/sections/Reserves";
+import WhyGive from "./components/sections/WhyGive";
+import Eligibility from "./components/sections/Eligibility";
+import ProcessAndPrep from "./components/sections/ProcessAndPrep";
+import Centers from "./components/sections/Centers";
+import Faq from "./components/sections/Faq";
+import Footer from "./components/layout/Footer";
+import MobileStickyCta from "./components/layout/MobileStickyCta";
 import "./Styles.css";
 
 function App() {

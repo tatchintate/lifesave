@@ -12,9 +12,10 @@ import {
   ShieldCheck,
   Droplet,
 } from "lucide-react";
-import { GENERAL_CRITERIA, checkEligibility } from "../lib/eligibility";
-import { centres } from "../data/centres";
-import { useInView } from "../hooks/useInView";
+import { GENERAL_CRITERIA, checkEligibility } from "../../lib/eligibility";
+import { centres } from "../../data/centres";
+import { useInView } from "../../hooks/useInView";
+
 
 // Composant Typewriter pour le titre de la section Éligibilité
 function TypewriterTitle({ inView }) {

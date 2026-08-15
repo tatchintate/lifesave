@@ -15,8 +15,9 @@ import {
   Loader2,
   ChevronDown,
 } from "lucide-react";
-import { centres } from "../data/centres";
-import { useInView } from "../hooks/useInView";
+import { centres } from "../../data/centres";
+import { useInView } from "../../hooks/useInView";
+
 
 /**
  * Calcul dynamique du statut (Ouvert / Fermé) en fonction de l'heure réelle de l'appareil

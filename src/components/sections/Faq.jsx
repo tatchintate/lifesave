@@ -9,7 +9,7 @@ import {
   Sparkles,
   AlertCircle,
 } from "lucide-react";
-import { useInView } from "../hooks/useInView";
+import { useInView } from "../../hooks/useInView";
 
 const FAQ_ITEMS = [
   {

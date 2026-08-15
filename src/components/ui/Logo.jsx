@@ -47,7 +47,7 @@ export default function Logo({ className = "" }) {
           L
         </text>
 
-        {/* "s" minuscule en BLEU CLAIR (hiérarchie secondaire) */}
+        {/* "s" minuscule en BLEU CLAIR */}
         <text
           x="23"
           y="27.5"

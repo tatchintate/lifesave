@@ -15,7 +15,8 @@ import {
   ShieldCheck,
   HeartPulse,
 } from "lucide-react";
-import { useInView } from "../hooks/useInView";
+import { useInView } from "../../hooks/useInView";
+
 
 const STEPS = [
   {

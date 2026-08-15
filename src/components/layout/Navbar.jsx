@@ -1,9 +1,10 @@
 // Navbar.jsx - Version Dynamique & Haut de Gamme
 import { useEffect, useState, useRef } from "react";
 import { MapPin, Menu, X, Heart, Activity, Calendar, HelpCircle, ShieldCheck } from "lucide-react";
-import Logo from "./Logo";
-import { Button } from "./ui/Button";
-import { cn } from "../lib/utils";
+import Logo from "../ui/Logo";
+import { Button } from "../ui/Button";
+import { cn } from "../../lib/utils";
+
 
 const NAV_LINKS = [
   { href: "#pourquoi", label: "Pourquoi donner", icon: Heart },

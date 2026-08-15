@@ -1,6 +1,7 @@
 import React from "react";
 import { AlertCircle, Droplet, Sparkles, TrendingDown, CheckCircle2 } from "lucide-react";
-import { useInView } from "../hooks/useInView";
+import { useInView } from "../../hooks/useInView";
+
 
 const BLOOD_GROUPS = [
   {
