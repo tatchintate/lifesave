@@ -13,7 +13,6 @@ import {
   X,
   ArrowRight,
   ShieldCheck,
-  Clock,
   HeartPulse,
 } from "lucide-react";
 import { useInView } from "../hooks/useInView";
@@ -123,23 +122,28 @@ export default function ProcessAndPrep() {
       id="deroulement"
       className="py-20 bg-gradient-to-b from-surface/40 via-white to-surface/30 border-t border-neutral-200/60 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        {/* En-tête de section centré et stylé */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
+        {/* En-tête de section centré et aligné */}
+        <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-12 sm:mb-16 gap-8">
+          <div>
+            <span className="inline-block text-xs sm:text-sm font-bold tracking-widest uppercase text-primary-700 py-1">
+              Déroulement et préparation
+            </span>
+          </div>
+          <div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-4">
+              45 minutes, <span className="text-primary-600">dont 10 de prélèvement.</span>
+            </h2>
+            <p className="text-base sm:text-lg text-neutral-600 leading-relaxed">
+              La grande majorité du temps sert à vous accueillir, vous écouter et vous remettre d'aplomb. Voici exactement ce qui vous attend étape par étape.
+            </p>
+          </div>
 
-          <span className="inline-block text-sm font-bold tracking-widest uppercase text-primary-700 py-1">
-            Déroulement et préparation
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-4">
-            45 minutes, dont 10 de prélèvement.
-          </h2>
-          <p className="text-base sm:text-lg text-neutral-600 leading-relaxed">
-            La grande majorité du temps sert à vous accueillir, vous écouter et vous remettre d'aplomb. Voici exactement ce qui vous attend étape par étape.
-          </p>
+
         </div>
 
-        {/* Timeline des 4 étapes avec animations et modale interactive */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        {/* Timeline des 4 étapes avec modale interactive */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 sm:mb-20">
           {STEPS.map(
             ({ num, duration, title, description, icon: Icon, highlight, details }, idx) => (
               <div
@@ -156,8 +160,8 @@ export default function ProcessAndPrep() {
               >
                 {/* Badge d'étape mise en avant */}
                 {highlight && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary-600 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-md flex items-center gap-1 animate-pulse">
-                    <HeartPulse size={12} /> Étape clé
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary-600 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-md flex items-center gap-1">
+                    <HeartPulse size={12} className="animate-pulse" /> Étape clé
                   </span>
                 )}
 
@@ -197,7 +201,7 @@ export default function ProcessAndPrep() {
                   </p>
                 </div>
 
-                <div className="pt-2 border-t border-neutral-100 flex items-center justify-between text-xs font-bold text-primary-600 opacity-80 group-hover:opacity-100">
+                <div className="pt-3 border-t border-neutral-100 flex items-center justify-between text-xs font-bold text-primary-600 opacity-90 group-hover:opacity-100">
                   <span>En savoir plus</span>
                   <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                 </div>
@@ -206,38 +210,38 @@ export default function ProcessAndPrep() {
           )}
         </div>
 
-        {/* CARD CONSEILS PRATIQUES : HAUTEMENT VISIBLE, SOMBRE & ANIMÉ DE SAUTS / VIBRATIONS */}
+        {/* CARD CONSEILS PRATIQUES */}
         <div
-          className={`relative bg-[#1A1817] text-white rounded-3xl p-6 sm:p-10 border-2 border-primary-500/40 shadow-2xl overflow-hidden transition-all duration-700 animate-float-bounce hover:border-primary-500 ${inView ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          className={`relative bg-[#1A1817] text-white rounded-3xl p-6 sm:p-10 border border-neutral-800 shadow-2xl overflow-hidden transition-all duration-700 ${inView ? "opacity-100 scale-100" : "opacity-0 scale-95"
             }`}
         >
           {/* Effet d'arrière-plan avec halo lumineux rouge */}
-          <div className="absolute -top-24 -right-24 w-72 h-72 bg-primary-600/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-24 -right-24 w-72 h-72 bg-primary-600/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
 
-          {/* Badge Supérieur Vibrant */}
-          <div className="flex items-center justify-between flex-wrap gap-3 mb-8">
+          {/* Badge Supérieur */}
+          <div className="flex items-center justify-between flex-wrap gap-4 mb-8 relative z-10">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-primary-600/30 border border-primary-500/50 flex items-center justify-center text-primary-400 shadow-md">
-                <Sparkles size={22} className="animate-spin" style={{ animationDuration: "8s" }} />
+                <Sparkles size={20} />
               </div>
               <div>
                 <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
                   Conseils pratiques pour réussir son don
                 </h3>
-                <p className="text-xs text-neutral-400">
-                  Recommandations essentielles de l'Établissement Français du Sang & ANTS Bénin
+                <p className="text-xs text-neutral-400 mt-0.5">
+                  Recommandations essentielles pour une expérience sereine
                 </p>
               </div>
             </div>
 
-            <span className="text-xs font-black uppercase tracking-widest text-primary-400 bg-primary-950/80 border border-primary-800/80 px-3.5 py-1.5 rounded-full shadow-inner animate-vibrate">
-              ⚠️ À lire impérativement
+            <span className="text-xs font-black uppercase tracking-widest text-primary-400 bg-primary-950/80 border border-primary-800/80 px-3.5 py-1.5 rounded-full shadow-inner">
+              💡 Recommandations EFS & ANTS
             </span>
           </div>
 
           {/* 3 Colonnes : Avant, Pendant, Après */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
             {PREPARATION_CARDS.map(({ phase, icon: Icon, badgeColor, iconColor, bullets }) => (
               <div
                 key={phase}
@@ -275,7 +279,7 @@ export default function ProcessAndPrep() {
           </div>
 
           {/* Note de bas de carte */}
-          <div className="mt-8 pt-6 border-t border-neutral-800/80 flex items-center gap-2.5 text-xs text-neutral-400 italic justify-center sm:justify-start">
+          <div className="mt-8 pt-6 border-t border-neutral-800/80 flex items-center gap-2.5 text-xs text-neutral-400 italic justify-center sm:justify-start relative z-10">
             <Info size={16} className="text-primary-400 flex-shrink-0" />
             <span>Un donneur bien hydraté et reposé garantit une expérience 100% sereine et un don rapide !</span>
           </div>
@@ -336,7 +340,7 @@ export default function ProcessAndPrep() {
               <div className="pt-4 flex justify-end">
                 <button
                   onClick={() => setActiveStepModal(null)}
-                  className="px-6 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-bold text-xs shadow-md transition-colors"
+                  className="px-6 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-bold text-xs shadow-md transition-colors cursor-pointer"
                 >
                   Compris, fermer
                 </button>
@@ -348,3 +352,4 @@ export default function ProcessAndPrep() {
     </section>
   );
 }
+

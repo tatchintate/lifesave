@@ -90,17 +90,21 @@ export default function Reserves() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-900/15 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
-        {/* En-tête de section unifié et moderne */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-xs sm:text-sm font-bold tracking-widest uppercase text-rose-400 bg-rose-950/80 border border-rose-800/80 rounded-full px-4 py-1.5 mb-4 shadow-sm">
-            Réserves nationales de sang
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
-            Les besoins <span className="text-primary-500">du moment.</span>
-          </h2>
-          <p className="text-base sm:text-lg text-neutral-400 leading-relaxed">
-            Les groupes Rhésus négatif et les donneurs universels (O-) manquent régulièrement. Si votre groupe est en rouge, votre don répond à une urgence vitale immédiate.
-          </p>
+        {/* En-tête de section centré et stylé */}
+        <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-16 gap-8">
+          <div>
+            <span className="inline-block text-xs sm:text-sm font-bold tracking-widest uppercase text-primary-400 py-1">
+              Réserves nationales de sang
+            </span>
+          </div>
+          <div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+              Les besoins <span className="text-primary-500">du moment.</span>
+            </h2>
+            <p className="text-base sm:text-lg text-neutral-400 leading-relaxed">
+              Les groupes Rhésus négatif et les donneurs universels (O-) manquent régulièrement. Si votre groupe est en rouge, votre don répond à une urgence vitale immédiate.
+            </p>
+          </div>
         </div>
 
         {/* Grille des 8 groupes sanguins avec jauges animées */}
@@ -113,13 +117,11 @@ export default function Reserves() {
               <div
                 key={group}
                 style={{ transitionDelay: `${idx * 100}ms` }}
-                className={`bg-[#201E1D] rounded-3xl p-6 border transition-all duration-500 flex flex-col justify-between hover:-translate-y-1.5 ${
-                  inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                } ${
-                  isCritical
+                className={`bg-[#201E1D] rounded-3xl p-6 border transition-all duration-500 flex flex-col justify-between hover:-translate-y-1.5 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  } ${isCritical
                     ? "border-rose-600/70 shadow-xl shadow-rose-950/30 hover:border-rose-500"
                     : "border-neutral-800 hover:border-neutral-700 shadow-md"
-                }`}
+                  }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">

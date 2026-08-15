@@ -149,11 +149,16 @@ export default function Eligibility() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-8 relative z-10">
         {/* En-tête centré avec écriture lettre par lettre */}
-        <div className="flex flex-col items-center justify-center text-center mb-10 sm:mb-12">
-          <span className="inline-block text-xs sm:text-sm font-bold tracking-widest uppercase text-primary-400 py-1">
-            Éligibilité au don
-          </span>
-          <TypewriterTitle inView={inView} />
+        <div className="flex flex-col items-center justify-center text-center mb-10 sm:mb-12 gap-8">
+          <div>
+            <span className="inline-block text-xs sm:text-sm font-bold tracking-widest uppercase text-primary-400 py-1">
+              Éligibilité au don
+            </span>
+          </div>
+          <div className="">
+            <TypewriterTitle inView={inView} />
+          </div>
+
         </div>
 
         {/* Le CARD complet sautille/flotte gentiment, icônes calmes */}
@@ -256,22 +261,20 @@ export default function Eligibility() {
                     <button
                       type="button"
                       onClick={() => setGender("femme")}
-                      className={`py-3 px-4 rounded-xl text-sm font-bold border transition-all ${
-                        gender === "femme"
-                          ? "bg-primary-600 text-white border-primary-600 shadow-md shadow-primary-600/20"
-                          : "bg-white text-neutral-700 border-neutral-200 hover:bg-neutral-100"
-                      }`}
+                      className={`py-3 px-4 rounded-xl text-sm font-bold border transition-all ${gender === "femme"
+                        ? "bg-primary-600 text-white border-primary-600 shadow-md shadow-primary-600/20"
+                        : "bg-white text-neutral-700 border-neutral-200 hover:bg-neutral-100"
+                        }`}
                     >
                       Femme
                     </button>
                     <button
                       type="button"
                       onClick={() => setGender("homme")}
-                      className={`py-3 px-4 rounded-xl text-sm font-bold border transition-all ${
-                        gender === "homme"
-                          ? "bg-primary-600 text-white border-primary-600 shadow-md shadow-primary-600/20"
-                          : "bg-white text-neutral-700 border-neutral-200 hover:bg-neutral-100"
-                      }`}
+                      className={`py-3 px-4 rounded-xl text-sm font-bold border transition-all ${gender === "homme"
+                        ? "bg-primary-600 text-white border-primary-600 shadow-md shadow-primary-600/20"
+                        : "bg-white text-neutral-700 border-neutral-200 hover:bg-neutral-100"
+                        }`}
                     >
                       Homme
                     </button>

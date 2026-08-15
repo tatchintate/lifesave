@@ -75,9 +75,9 @@ function calculateDistanceKm(lat1, lon1, lat2, lon2) {
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos((lat1 * Math.PI) / 180) *
-      Math.cos((lat2 * Math.PI) / 180) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
+    Math.cos((lat2 * Math.PI) / 180) *
+    Math.sin(dLon / 2) *
+    Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return Math.round(R * c * 10) / 10;
 }
@@ -230,23 +230,27 @@ export default function Centers() {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         {/* En-tête Unifié et Épuré */}
         <div
-          className={`flex flex-col mb-10 transition-all duration-700 ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
+          className={`flex flex-col mb-10 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
         >
-          <div className="flex items-center gap-2 mb-2">
-            <span className="inline-block text-xs sm:text-sm font-bold tracking-widest uppercase text-primary-700 bg-primary-50 border border-primary-100 rounded-full px-3.5 py-1">
+          <div className="flex flex-col mb-6">
+            <span className="inline-block text-sm font-bold tracking-widest uppercase text-primary-700 py-1">
               Répertoire des centres
             </span>
+            <span className="bg-primary-100/70 w-10 border border-primary-200/80 rounded-full px-1 py-0.5 mb-4" />
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#C62828] tracking-tight leading-tight mb-3">
-            Trouver un centre près de chez vous
-          </h2>
+          <div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-3">
+              Trouver un centre près de chez vous
+            </h2>
 
-          <p className="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-3xl">
-            Localisez facilement les centres de transfusion de l'ANTS et les collectes éphémères au Bénin.
-          </p>
+            <p className="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-3xl">
+              Localisez facilement les centres de transfusion de l'ANTS et les collectes éphémères au Bénin.
+            </p>
+          </div>
+
+
         </div>
 
         {/* Disposition Principale : Sidebar Filtres + Grille Résultats */}
@@ -349,11 +353,10 @@ export default function Centers() {
                     key={type}
                     type="button"
                     onClick={() => setSelectedType(type)}
-                    className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all text-center ${
-                      selectedType === type
-                        ? "bg-primary-600 text-white border-primary-600 shadow-xs"
-                        : "bg-neutral-50 text-neutral-700 border-neutral-200 hover:bg-neutral-100"
-                    }`}
+                    className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all text-center ${selectedType === type
+                      ? "bg-primary-600 text-white border-primary-600 shadow-xs"
+                      : "bg-neutral-50 text-neutral-700 border-neutral-200 hover:bg-neutral-100"
+                      }`}
                   >
                     {type}
                   </button>
@@ -376,11 +379,10 @@ export default function Centers() {
                     key={key}
                     type="button"
                     onClick={() => setSelectedStatus(key)}
-                    className={`py-1.5 px-1.5 rounded-lg text-xs font-semibold border transition-all text-center ${
-                      selectedStatus === key
-                        ? "bg-neutral-900 text-white border-neutral-900"
-                        : "bg-neutral-50 text-neutral-700 border-neutral-200 hover:bg-neutral-100"
-                    }`}
+                    className={`py-1.5 px-1.5 rounded-lg text-xs font-semibold border transition-all text-center ${selectedStatus === key
+                      ? "bg-neutral-900 text-white border-neutral-900"
+                      : "bg-neutral-50 text-neutral-700 border-neutral-200 hover:bg-neutral-100"
+                      }`}
                   >
                     {label}
                   </button>
@@ -464,18 +466,16 @@ export default function Centers() {
                           </span>
 
                           <span
-                            className={`text-xs font-medium px-2.5 py-0.5 rounded-md flex items-center gap-1.5 ${
-                              centre.realtime.isOpen
-                                ? "bg-emerald-50 text-emerald-700 border border-emerald-200/60"
-                                : "bg-neutral-100 text-neutral-600"
-                            }`}
+                            className={`text-xs font-medium px-2.5 py-0.5 rounded-md flex items-center gap-1.5 ${centre.realtime.isOpen
+                              ? "bg-emerald-50 text-emerald-700 border border-emerald-200/60"
+                              : "bg-neutral-100 text-neutral-600"
+                              }`}
                           >
                             <span
-                              className={`w-1.5 h-1.5 rounded-full ${
-                                centre.realtime.isOpen
-                                  ? "bg-emerald-500"
-                                  : "bg-neutral-400"
-                              }`}
+                              className={`w-1.5 h-1.5 rounded-full ${centre.realtime.isOpen
+                                ? "bg-emerald-500"
+                                : "bg-neutral-400"
+                                }`}
                             />
                             {centre.realtime.label}
                           </span>
