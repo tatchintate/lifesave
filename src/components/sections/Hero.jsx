@@ -198,9 +198,12 @@ export default function Hero() {
               variant="glow"
               size="lg"
               onClick={() => scrollToSection("#eligibilite")}
-              className="bg-rose-600 hover:bg-rose-700 text-white rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 shadow-lg shadow-rose-600/30 border-none font-bold text-xs sm:text-sm lg:text-base"
+              className="bg-rose-600 hover:bg-rose-700 text-white rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 shadow-sm shadow-rose-400/20 border-none font-bold text-xs sm:text-sm lg:text-base"
+
+
+
             >
-              <span className="whitespace-nowrap">Vérifier mon éligibilité</span>
+              <span className="">Vérifier mon éligibilité</span>
               <ArrowRight size={16} />
             </Button>
 

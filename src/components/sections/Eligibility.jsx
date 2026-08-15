@@ -57,21 +57,22 @@ function TypewriterTitle({ inView }) {
   }, [inView]);
 
   return (
-    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight min-h-[72px] sm:min-h-[96px]">
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 md:text-white tracking-tight leading-tight min-h-[72px] sm:min-h-[96px]">
       <span>{text1}</span>
       {activeLine === 1 && (
-        <span className="inline-block w-1 sm:w-1.5 h-6 sm:h-10 bg-primary-500 ml-1.5 animate-pulse align-middle" />
+        <span className="inline-block w-1 sm:w-1.5 h-6 sm:h-10 bg-rose-600 md:bg-rose-500 ml-1.5 animate-pulse align-middle" />
       )}
       {text1.length > 0 && <br />}
-      <span className="text-primary-500">
+      <span className="text-rose-600 md:text-rose-500">
         {text2}
       </span>
       {activeLine === 2 && (
-        <span className="inline-block w-1 sm:w-1.5 h-6 sm:h-10 bg-primary-500 ml-1.5 animate-pulse align-middle" />
+        <span className="inline-block w-1 sm:w-1.5 h-6 sm:h-10 bg-rose-600 md:bg-rose-500 ml-1.5 animate-pulse align-middle" />
       )}
     </h2>
   );
 }
+
 
 export default function Eligibility() {
   const [sectionRef, inView] = useInView({ threshold: 0.1 });
@@ -143,28 +144,27 @@ export default function Eligibility() {
     <section
       ref={sectionRef}
       id="eligibilite"
-      className="py-16 sm:py-24 bg-[#181716] text-white border-t border-neutral-800 relative overflow-hidden"
+      className="py-12 sm:py-16 bg-[#F5F4F0] md:bg-[#181716] text-neutral-900 md:text-white border-t border-neutral-200 md:border-neutral-800 relative overflow-hidden transition-colors"
     >
-      {/* Halo décoratif rouge très doux en arrière-plan */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary-600/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* Halo décoratif rouge très doux en arrière-plan (Desktop) */}
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary-600/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-8 relative z-10">
         {/* En-tête centré avec écriture lettre par lettre */}
-        <div className="flex flex-col items-center justify-center text-center mb-10 sm:mb-12 gap-8">
+        <div className="flex flex-col items-center justify-center text-center mb-10 sm:mb-12 gap-6">
           <div>
-            <span className="inline-block text-xs sm:text-sm font-bold tracking-widest uppercase text-primary-400 py-1">
+            <span className="inline-block text-xs sm:text-sm font-bold tracking-widest uppercase text-rose-700 md:text-rose-400 py-1">
               Éligibilité au don
             </span>
           </div>
-          <div className="">
+          <div>
             <TypewriterTitle inView={inView} />
           </div>
-
         </div>
 
-        {/* Le CARD complet sautille/flotte gentiment, icônes calmes */}
-        <div className="bg-[#211F1D] rounded-3xl p-6 sm:p-10 border border-neutral-800/80 shadow-2xl mb-10 animate-float-bounce hover:border-primary-500/30 transition-all">
-          <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 tracking-tight">
+        {/* Le CARD complet sautille/flotte gentiment */}
+        <div className="bg-white md:bg-[#211F1D] rounded-3xl p-6 sm:p-10 border border-neutral-200/80 md:border-neutral-800/80 shadow-md md:shadow-2xl mb-10 animate-float-bounce hover:border-rose-300 md:hover:border-primary-500/30 transition-all">
+          <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 md:text-white mb-6 tracking-tight">
             Critères généraux
           </h3>
 
@@ -172,15 +172,15 @@ export default function Eligibility() {
             {GENERAL_CRITERIA.map((criterion, idx) => (
               <li key={idx} className="flex items-start gap-3.5 group">
                 {criterion.type === "success" ? (
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-950/80 border border-emerald-600/60 flex items-center justify-center text-emerald-400 mt-0.5">
-                    <CheckCircle2 size={16} className="text-emerald-400" />
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 md:bg-emerald-950/80 border border-emerald-200 md:border-emerald-600/60 flex items-center justify-center text-emerald-700 md:text-emerald-400 mt-0.5">
+                    <CheckCircle2 size={16} />
                   </div>
                 ) : (
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-rose-950/80 border border-rose-600/60 flex items-center justify-center text-rose-400 mt-0.5">
-                    <AlertTriangle size={15} className="text-rose-400" />
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-rose-100 md:bg-rose-950/80 border border-rose-200 md:border-rose-600/60 flex items-center justify-center text-rose-700 md:text-rose-400 mt-0.5">
+                    <AlertTriangle size={15} />
                   </div>
                 )}
-                <span className="text-sm sm:text-base text-neutral-200 font-medium leading-relaxed">
+                <span className="text-sm sm:text-base text-neutral-800 md:text-neutral-200 font-medium leading-relaxed">
                   {criterion.text}
                 </span>
               </li>
@@ -188,12 +188,13 @@ export default function Eligibility() {
           </ul>
 
           {/* Sub-text obligatoire en bas du bloc */}
-          <div className="mt-8 pt-6 border-t border-neutral-800 text-center sm:text-left">
-            <p className="text-xs sm:text-sm text-neutral-400 italic">
+          <div className="mt-8 pt-6 border-t border-neutral-100 md:border-neutral-800 text-center sm:text-left">
+            <p className="text-xs sm:text-sm text-neutral-500 md:text-neutral-400 italic">
               Seul un entretien médical professionnel peut confirmer définitivement votre aptitude au don.
             </p>
           </div>
         </div>
+
 
         {/* Bouton d'action principal centré sous le bloc */}
         <div className="flex flex-col items-center justify-center">
@@ -211,7 +212,8 @@ export default function Eligibility() {
               className="transition-transform group-hover:translate-x-1"
             />
           </button>
-          <span className="mt-2.5 text-xs text-neutral-400">
+          <span className="mt-2.5 text-xs text-neutral-600 md:text-neutral-400 font-medium">
+
             Test gratuit, anonyme & instantané (1 minute)
           </span>
         </div>

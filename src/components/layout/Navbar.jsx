@@ -1,17 +1,15 @@
-// Navbar.jsx - Version Dynamique & Haut de Gamme
 import { useEffect, useState, useRef } from "react";
 import { MapPin, Menu, X, Heart, Activity, Calendar, HelpCircle, ShieldCheck } from "lucide-react";
 import Logo from "../ui/Logo";
 import { Button } from "../ui/Button";
 import { cn } from "../../lib/utils";
 
-
 const NAV_LINKS = [
   { href: "#pourquoi", label: "Pourquoi donner", icon: Heart },
-  { href: "#eligibilite", label: "Suis-je éligible ?", icon: ShieldCheck },
-  { href: "#deroulement", label: "Déroulement", icon: Calendar },
-  { href: "#ou-donner", label: "Où donner", icon: MapPin },
   { href: "#reserves", label: "Réserves", icon: Activity },
+  { href: "#deroulement", label: "Déroulement", icon: Calendar },
+  { href: "#eligibilite", label: "Suis-je éligible ?", icon: ShieldCheck },
+  { href: "#ou-donner", label: "Où donner", icon: MapPin },
   { href: "#faq", label: "FAQ", icon: HelpCircle },
 ];
 
@@ -39,9 +37,9 @@ export default function Navbar() {
       // Masquage intelligent (Slide UP en descendant, Slide DOWN en remontant)
       if (currentScrollY > 100) {
         if (currentScrollY > lastScrollY.current + 5) {
-          setVisible(false); // Scroll vers le bas -> Masquer
+          setVisible(false);
         } else if (currentScrollY < lastScrollY.current - 5) {
-          setVisible(true);  // Scroll vers le haut -> Réapparaître
+          setVisible(true);
         }
       } else {
         setVisible(true);
@@ -49,18 +47,16 @@ export default function Navbar() {
       
       lastScrollY.current = currentScrollY;
 
-      // Détection automatique de la section active
-      const sections = NAV_LINKS.map((link) => ({
-        href: link.href,
-        element: document.querySelector(link.href),
-      }));
+      // Détection exacte de la section active selon l'ordre du DOM
+      const sectionIds = ["pourquoi", "reserves", "deroulement", "eligibilite", "ou-donner", "faq"];
+      const scrollPosition = currentScrollY + 140;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sec = sections[i];
-        if (sec.element) {
-          const rect = sec.element.getBoundingClientRect();
-          if (rect.top <= 120) {
-            setActiveHref(sec.href);
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveHref(`#${sectionIds[i]}`);
             break;
           }
         }
@@ -71,7 +67,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 2. Calcul et animation du soulignement glissant (Sliding Underline / Pill Indicator)
+  // 2. Calcul et animation du soulignement glissant (Sliding Pill Indicator)
   const targetHref = hoveredHref || activeHref;
 
   useEffect(() => {
@@ -136,10 +132,7 @@ export default function Navbar() {
           : "bg-white/60 backdrop-blur-md border-b border-transparent py-4"
       )}
     >
-      {/* Conteneur principal avec largeur élargie et aérée */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
-
-        
         {/* Branding & Logo */}
         <a
           href="#"
@@ -156,13 +149,12 @@ export default function Navbar() {
           </span>
         </a>
 
-        {/* Navigation Desktop avec soulignement glissant */}
+        {/* Navigation Desktop */}
         <nav
           ref={navContainerRef}
           onMouseLeave={() => setHoveredHref(null)}
           className="hidden lg:flex items-center gap-1 relative px-1 py-1 rounded-full bg-neutral-100/60 border border-neutral-200/50 backdrop-blur-sm"
         >
-          {/* Indicateur glissant animé (Pill sliding background) */}
           <div
             className="absolute top-1 bottom-1 bg-white rounded-full shadow-sm border border-neutral-200/60 transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none"
             style={{
@@ -196,7 +188,7 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Bouton CTA d'action directe "Trouver un centre" en Rose Corail Vif */}
+        {/* Bouton CTA "Trouver un centre" */}
         <div className="hidden md:flex items-center gap-3">
           <Button
             variant="glow"
@@ -221,7 +213,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Menu Mobile Coulissant et Staggered */}
+      {/* Menu Mobile */}
       <div
         className={cn(
           "lg:hidden overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
@@ -266,6 +258,7 @@ export default function Navbar() {
               size="md"
               fullWidth
               onClick={(e) => handleLinkClick("#ou-donner", e)}
+              className="bg-rose-600 hover:bg-rose-700 text-white shadow-md shadow-rose-600/20"
             >
               <MapPin size={16} />
               <span>Trouver un centre de don</span>
