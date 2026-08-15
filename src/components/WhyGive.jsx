@@ -1,6 +1,6 @@
 import React from "react";
 import { Ambulance, Baby, HeartPulse, Hourglass } from "lucide-react";
-import bloodimage from "../assets/blood.jpg";
+import bloodimage from "../assets/blood.png";
 import { useInView } from "../hooks/useInView";
 
 const REASONS = [
