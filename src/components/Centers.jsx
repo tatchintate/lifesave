@@ -242,7 +242,7 @@ export default function Centers() {
 
           <div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-3">
-              Trouver un centre près de chez vous
+              Trouver un centre <span className="text-rose-600">près de chez vous</span>
             </h2>
 
             <p className="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-3xl">
@@ -276,7 +276,7 @@ export default function Centers() {
               <button
                 onClick={handleGeolocate}
                 disabled={isLocating}
-                className="w-full py-2.5 px-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-bold text-xs shadow-sm transition-colors flex items-center justify-center gap-2 active:scale-[0.98] disabled:opacity-75"
+                className="w-full py-2.5 px-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-sm transition-colors flex items-center justify-center gap-2 active:scale-[0.98] disabled:opacity-75"
               >
                 {isLocating ? (
                   <>

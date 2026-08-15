@@ -195,12 +195,13 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Bouton CTA d'action directe "Trouver un centre" */}
+        {/* Bouton CTA d'action directe "Trouver un centre" en Rose Corail Vif */}
         <div className="hidden md:flex items-center gap-3">
           <Button
             variant="glow"
             size="sm"
             onClick={(e) => handleLinkClick("#ou-donner", e)}
+            className="bg-rose-600 hover:bg-rose-700 text-white shadow-md shadow-rose-600/20"
           >
             <MapPin size={15} />
             <span>Trouver un centre</span>

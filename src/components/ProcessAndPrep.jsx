@@ -132,7 +132,7 @@ export default function ProcessAndPrep() {
           </div>
           <div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-4">
-              45 minutes, <span className="text-primary-600">dont 10 de prélèvement.</span>
+              45 minutes, <span className="text-rose-600">dont 10 de prélèvement.</span>
             </h2>
             <p className="text-base sm:text-lg text-neutral-600 leading-relaxed">
               La grande majorité du temps sert à vous accueillir, vous écouter et vous remettre d'aplomb. Voici exactement ce qui vous attend étape par étape.

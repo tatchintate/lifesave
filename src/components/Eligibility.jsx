@@ -201,9 +201,9 @@ export default function Eligibility() {
               setIsModalOpen(true);
               setResult(null);
             }}
-            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-base sm:text-lg font-bold text-white bg-primary-600 hover:bg-primary-500 rounded-2xl shadow-xl shadow-primary-600/30 transition-all duration-300 animate-vibrate hover:scale-[1.05] active:scale-[0.98] cursor-pointer"
+            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-base sm:text-lg font-bold text-white bg-rose-600 hover:bg-rose-500 rounded-2xl shadow-xl shadow-rose-600/30 transition-all duration-300 animate-vibrate hover:scale-[1.05] active:scale-[0.98] cursor-pointer"
           >
-            <Sparkles size={20} className="text-primary-200 animate-pulse" />
+            <Sparkles size={20} className="text-rose-200 animate-pulse" />
             <span>Vérifier mon éligibilité</span>
             <ArrowRight
               size={20}

@@ -135,19 +135,19 @@ function TypewriterTitle() {
     <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-[3.35rem] xl:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
       <span>{text1}</span>
       {activeLine === 1 && (
-        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-primary-500 ml-1.5 animate-pulse align-middle" />
+        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-rose-500 ml-1.5 animate-pulse align-middle" />
       )}
       <br />
-      <span className="text-primary-500 font-serif italic font-normal">
+      <span className="text-rose-500 font-serif italic font-normal">
         {text2}
       </span>
       {activeLine === 2 && (
-        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-primary-500 ml-1.5 animate-pulse align-middle" />
+        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-rose-500 ml-1.5 animate-pulse align-middle" />
       )}
       {text2.length > 0 && <br />}
       <span>{text3}</span>
       {activeLine === 3 && (
-        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-primary-500 ml-1.5 animate-pulse align-middle" />
+        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-rose-500 ml-1.5 animate-pulse align-middle" />
       )}
     </h1>
   );
@@ -167,14 +167,14 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center pt-24 xs:pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16 md:pb-24 overflow-hidden bg-[#0B1528] text-white">
-      {/* Image de fond hero.jpg parfaitement visible sous filtre bleu nuit médical */}
+      {/* Image de fond hero.jpg sous filtre bleu nuit & corail */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src={heroImg}
           alt="Don de sang et soins médicaux"
           className="w-full h-full object-cover object-center filter brightness-90 contrast-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1528]/95 via-[#0B1528]/70 to-[#0B1528]/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1528]/95 via-[#0B1528]/75 to-[#0B1528]/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0B1528] via-transparent to-[#0B1528]/50" />
       </div>
 
@@ -191,13 +191,13 @@ export default function Hero() {
             Êtes-vous prêt à faire la différence ?
           </p>
 
-          {/* Boutons d'action pillules - TAILLE CONSERVÉE */}
+          {/* Boutons d'action pillules - HARMONISATION DUAL-TONE */}
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Button
               variant="glow"
               size="lg"
               onClick={() => scrollToSection("#eligibilite")}
-              className="bg-primary-500 hover:bg-primary-600 text-white rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 shadow-lg shadow-primary-500/30 border-none font-bold text-xs sm:text-sm lg:text-base"
+              className="bg-rose-600 hover:bg-rose-700 text-white rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 shadow-lg shadow-rose-600/30 border-none font-bold text-xs sm:text-sm lg:text-base"
             >
               <span className="whitespace-nowrap">Vérifier mon éligibilité</span>
               <ArrowRight size={16} />
@@ -221,14 +221,14 @@ export default function Hero() {
               <span className="text-[10px] xs:text-xs font-bold uppercase tracking-wider text-slate-400">
                 Informations & Vidéo
               </span>
-              <span className="text-[10px] xs:text-xs text-primary-400 font-semibold whitespace-nowrap">
+              <span className="text-[10px] xs:text-xs text-rose-400 font-semibold whitespace-nowrap bg-rose-500/10 px-2.5 py-1 rounded-full border border-rose-500/20">
                 1 don = 3 vies
               </span>
             </div>
 
             <HeroVideo />
 
-            {/* CARDS - Légèrement agrandies sur grand écran */}
+            {/* CARDS - Repères rapides avec reflets bleu sapphire et touches corail */}
             <div ref={cardsRef} className="grid grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
               {INFO_CARDS.map(({ icon: Icon, label, description, href }, index) => (
                 <div
@@ -239,10 +239,10 @@ export default function Hero() {
                     }`}
                 >
                   <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-2.5">
-                    <div className="p-1 sm:p-1.5 lg:p-2 rounded-lg bg-primary-500/10 text-primary-400 group-hover:bg-primary-500 group-hover:text-white transition-colors duration-300 flex-shrink-0">
+                    <div className="p-1 sm:p-1.5 lg:p-2 rounded-lg bg-rose-500/10 text-rose-400 group-hover:bg-rose-600 group-hover:text-white transition-colors duration-300 flex-shrink-0">
                       <Icon size={14} className="sm:size-[15px] lg:size-[17px]" />
                     </div>
-                    <span className="text-[10px] xs:text-xs sm:text-sm lg:text-[15px] font-bold text-white group-hover:text-primary-400 transition-colors leading-tight">
+                    <span className="text-[10px] xs:text-xs sm:text-sm lg:text-[15px] font-bold text-white group-hover:text-primary-300 transition-colors leading-tight">
                       {label}
                     </span>
                   </div>

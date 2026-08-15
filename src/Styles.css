@@ -1,41 +1,61 @@
 @import "tailwindcss";
 
 @theme {
-  /* Primary */
-  --color-primary-50: #FFF0F2;
-  --color-primary-100: #FFE0E4;
-  --color-primary-200: #FFC2C9;
-  --color-primary-300: #FFA0AC;
-  --color-primary-400: #FF7C8E;
-  --color-primary-500: #F0696A;
-  --color-primary-600: #E05253;
-  --color-primary-700: #C62828;
-  --color-primary-800: #B71C1C;
-  --color-primary-900: #8B1A1A;
+  /* Primary Brand Palette - Deep Sapphire & Ocean Cerulean Blue */
+  --color-primary-50: #EFF6FF;
+  --color-primary-100: #DBEAFE;
+  --color-primary-200: #BFDBFE;
+  --color-primary-300: #93C5FD;
+  --color-primary-400: #4A90D9; /* Logo 's' cerulean accent */
+  --color-primary-500: #2563EB; /* Vibrant interactive blue */
+  --color-primary-600: #1D4ED8; /* Royal blue */
+  --color-primary-700: #1B4B7A; /* Logo 'L' & circle stroke deep sapphire */
+  --color-primary-800: #133E7C; /* Dark sapphire */
+  --color-primary-900: #0F2C59; /* Reference image midnight blue */
+  --color-primary-950: #0B192C; /* Deepest midnight navy */
 
-  /* Secondary */
-  --color-secondary-50: #E8EAF6;
-  --color-secondary-100: #C5CAE9;
-  --color-secondary-200: #9FA8DA;
-  --color-secondary-300: #7986CB;
-  --color-secondary-400: #5C6BC0;
-  --color-secondary-500: #3F51B5;
-  --color-secondary-600: #1A237E;
-  --color-secondary-700: #151B6E;
-  --color-secondary-800: #10145A;
-  --color-secondary-900: #0B0D45;
+  /* Vitality Palette - Warm Coral Rose & Life Red */
+  --color-rose-50: #FFF0F2;
+  --color-rose-100: #FFE0E4;
+  --color-rose-200: #FFC2C9;
+  --color-rose-300: #FFA0AC;
+  --color-rose-400: #FF7C8E;
+  --color-rose-500: #F0696A; /* Warm Coral Rose CTA */
+  --color-rose-600: #E05253; /* Vibrant Life Red */
+  --color-rose-700: #C62828; /* Logo drop crimson */
+  --color-rose-800: #B71C1C;
+  --color-rose-900: #8B1A1A;
 
-  /* Neutral */
-  --color-neutral-50: #FAFAFA;
-  --color-neutral-100: #F5F5F5;
-  --color-neutral-200: #E8E8E8;
-  --color-neutral-300: #D4D4D4;
-  --color-neutral-400: #B0B0B0;
-  --color-neutral-500: #8C8C8C;
-  --color-neutral-600: #6B6B6B;
-  --color-neutral-700: #4A4A4A;
-  --color-neutral-800: #333333;
-  --color-neutral-900: #1A1A1A;
+  /* Secondary Palette - Sky Tint & Cyan Accent */
+  --color-secondary-50: #F0F9FF;
+  --color-secondary-100: #E0F2FE;
+  --color-secondary-200: #BAE6FD;
+  --color-secondary-300: #7DD3FC;
+  --color-secondary-400: #38BDF8;
+  --color-secondary-500: #0284C7;
+  --color-secondary-600: #0369A1;
+  --color-secondary-700: #075985;
+  --color-secondary-800: #0C4A6E;
+  --color-secondary-900: #0A3650;
+
+  /* Blood Medical Red Scale (Reserved for blood drops & stock alerts) */
+  --color-blood-50: #FFF1F2;
+  --color-blood-100: #FFE4E6;
+  --color-blood-500: #E53935;
+  --color-blood-600: #C62828;
+  --color-blood-700: #B71C1C;
+
+  /* Neutral Scale - Cool Slate & Ice Tints */
+  --color-neutral-50: #F8FAFC;
+  --color-neutral-100: #F1F5F9;
+  --color-neutral-200: #E2E8F0;
+  --color-neutral-300: #CBD5E1;
+  --color-neutral-400: #94A3B8;
+  --color-neutral-500: #64748B;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1E293B;
+  --color-neutral-900: #0F172A;
 
   /* Accent */
   --color-accent-50: #FFF8E1;
@@ -50,16 +70,14 @@
   --color-accent-900: #BF360C;
 
   /* Couleurs additionnelles */
-  --color-surface: #FDF1EA;
-  --color-background: #F5F7FA;
+  --color-surface: #F1F5F9;
+  --color-background: #F8FAFC;
   --color-card: #FFFFFF;
 
   /* Police */
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 
-  /* Animations du logo — génèrent automatiquement les classes
-     animate-draw-circle, animate-fill-circle, animate-fade-in-l,
-     animate-fade-in-s, animate-drop-fall */
+  /* Animations du logo — génèrent automatiquement les classes */
   --animate-draw-circle: drawCircle 0.9s ease-out forwards;
   --animate-fill-circle: fillCircle 0.4s ease-out 0.7s forwards;
   --animate-fade-in-l: fadeInLetter 0.4s ease-out 1s forwards;
@@ -69,19 +87,18 @@
   /* Curseur du texte "machine à écrire" */
   --animate-caret-blink: caretBlink 1s steps(2, start) infinite;
 
-  /* Apparition en fondu + léger glissement (Hero, cartes) */
+  /* Apparition en fondu + léger glissement */
   --animate-fade-up: fadeUp 0.6s ease-out forwards;
 
-  /* Entrée de la navbar depuis le haut, au chargement */
+  /* Entrée de la navbar depuis le haut */
   --animate-nav-in: navIn 0.6s ease-out 0.1s both;
 }
 
-/* Les @keyframes restent en CSS classique, hors de @theme */
+/* Les @keyframes restent en CSS classique */
 @keyframes drawCircle {
   from {
     stroke-dashoffset: 100;
   }
-
   to {
     stroke-dashoffset: 0;
   }
@@ -123,7 +140,6 @@
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
@@ -134,7 +150,6 @@
     opacity: 0;
     transform: translateY(4px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -146,11 +161,9 @@
     opacity: 0;
     transform: translateY(-16px) scale(0.6);
   }
-
   60% {
     opacity: 1;
   }
-
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -168,7 +181,6 @@
     opacity: 0;
     transform: translateY(12px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -180,7 +192,6 @@
     opacity: 0;
     transform: translateY(-100%);
   }
-
 }
 
 @keyframes float {
@@ -198,10 +209,10 @@
 
 @keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(198, 40, 40, 0.3);
+    box-shadow: 0 0 20px rgba(27, 75, 122, 0.3);
   }
   50% {
-    box-shadow: 0 0 45px rgba(198, 40, 40, 0.65);
+    box-shadow: 0 0 45px rgba(27, 75, 122, 0.65);
   }
 }
 
@@ -209,31 +220,25 @@
   animation: pulseGlow 3s ease-in-out infinite;
 }
 
-
 /* Styles globaux */
 body {
   background-color: var(--color-neutral-50);
-  color: var(--color-neutral-800);
+  color: var(--color-neutral-900);
   font-family: var(--font-sans);
 }
 
-/* Classes utilitaires personnalisées (facultatif) */
 .bg-primary-gradient {
-  background: linear-gradient(135deg, var(--color-primary-600), var(--color-secondary-600));
+  background: linear-gradient(135deg, var(--color-primary-700), var(--color-primary-900));
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-600));
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-
-
-
 @layer base {
-  /* Conteneur principal harmonisé avec marges horizontales généreuses et larges */
   .container-custom {
     max-width: var(--container-max-width, 85rem);
     margin-left: auto;
@@ -242,37 +247,34 @@ body {
     padding-right: var(--container-padding-x, 1.5rem);
   }
 
-  /* Espacement des sections */
   .section-spacing {
     padding-top: 4.5rem;
     padding-bottom: 4.5rem;
   }
 }
 
-/* Variables de marges globales (Modifiables de façon centralisée) */
 :root {
-  /* Palette principale */
-  --primary: #F0696A;        /* Rouge corail vif, chaleureux */
-  --primary-light: #FF7C8E;  /* Rouge clair pour hover */
-  --primary-dark: #E05253;   /* Rouge profond */
+  --primary: #1B4B7A;        /* Bleu Sapphire profond */
+  --primary-light: #4A90D9;  /* Bleu ciel / cerulean */
+  --primary-dark: #0F2C59;   /* Bleu nuit profond */
 
-  --secondary: #1565C0;      /* Bleu confiance */
-  --secondary-light: #42A5F5;
+  --secondary: #2563EB;
+  --secondary-light: #60A5FA;
 
-  --neutral: #F5F5F5;        /* Gris très clair */
-  --neutral-dark: #616161;   /* Gris moyen */
-  --text-primary: #212121;   /* Presque noir */
-  --text-secondary: #757575;
+  --neutral: #F8FAFC;
+  --neutral-dark: #475569;
+  --text-primary: #0F172A;
+  --text-secondary: #64748B;
 
-  --accent: #FF6F00;         /* Orange ambré pour alertes */
-  --success: #2E7D32;        /* Vert pour éligible */
-  --error: #C62828;          /* Rouge pour non-éligible */
+  --accent: #FF6F00;
+  --success: #10B981;
+  --error: #C62828;
 
-  --background: #FAFAFA;
+  --background: #F8FAFC;
   --card: #FFFFFF;
-  --shadow: rgba(0,0,0,0.1);
+  --shadow: rgba(15, 23, 42, 0.08);
 
-  --container-max-width: 85rem; /* 1360px - mise en page large, aérée et moderne */
+  --container-max-width: 85rem;
   --container-padding-x: 1.5rem;
   --container-padding-y: 2rem;
   --section-gap: 5rem;

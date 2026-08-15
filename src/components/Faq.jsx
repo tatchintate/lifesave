@@ -163,7 +163,7 @@ export default function Faq() {
 
           <div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 lg:max-w-7xl mx-auto tracking-tight leading-tight mb-4">
-              Toutes les réponses à vos interrogations.
+              Toutes les réponses à <span className="text-rose-600">vos interrogations.</span>
             </h2>
             <p className="text-base sm:text-lg text-neutral-600 leading-relaxed">
               Nous déconstruisons les idées reçues et fausses croyances pour vous permettre de donner votre sang en toute confiance.
@@ -342,7 +342,7 @@ export default function Faq() {
             </div>
             <a
               href="#ou-donner"
-              className="px-5 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-bold text-xs shadow-md transition-all whitespace-nowrap"
+              className="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-md transition-all whitespace-nowrap"
             >
               Trouver un centre
             </a>
