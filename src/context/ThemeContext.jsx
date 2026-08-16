@@ -4,17 +4,14 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [isDark, setIsDark] = useState(() => {
-    // 1. Vérifier si un choix a été sauvegardé localement
+    // 1. Si l'utilisateur a un choix sauvegardé
     const saved = localStorage.getItem("lifesave-theme");
     if (saved) return saved === "dark";
 
-    // 2. Par défaut, vérifier la préférence du système
-    if (typeof window !== "undefined" && window.matchMedia) {
-      return window.matchMedia("(prefers-color-scheme: dark)").matches;
-    }
-
+    // 2. Par défaut lors de la première visite : Mode Clair (false)
     return false;
   });
+
 
   useEffect(() => {
     const root = document.documentElement;
