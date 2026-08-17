@@ -40,9 +40,9 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Col 2: Navigation rapide (Éléments d'accentuation en Rose Corail) */}
+          {/* Col 2: Navigation rapide (Éléments d'accentuation en Bleu Sapphire) */}
           <div>
-            <h4 className="font-extrabold text-xs uppercase tracking-widest mb-3 text-rose-400">
+            <h4 className="font-extrabold text-xs uppercase tracking-widest mb-3 text-primary-400">
               Navigation
             </h4>
             <ul className="grid grid-cols-2 gap-2 text-xs text-neutral-300 font-medium">
@@ -57,9 +57,9 @@ export default function Footer() {
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className="hover:text-rose-300 transition-colors inline-flex items-center gap-1"
+                    className="hover:text-primary-300 transition-colors inline-flex items-center gap-1"
                   >
-                    <ChevronRight size={12} className="text-rose-500" />
+                    <ChevronRight size={12} className="text-primary-400" />
                     <span>{item.name}</span>
                   </a>
                 </li>
@@ -67,14 +67,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: Contact & Urgences ANTS (Accents en Rose Corail) */}
+          {/* Col 3: Contact & Urgences ANTS (Accents en Bleu Sapphire) */}
           <div>
-            <h4 className="font-extrabold text-xs uppercase tracking-widest mb-3 text-rose-400">
+            <h4 className="font-extrabold text-xs uppercase tracking-widest mb-3 text-primary-400">
               Contact & Urgences
             </h4>
             <ul className="space-y-2 text-xs text-neutral-300">
               <li className="flex items-center gap-2">
-                <MapPin size={14} className="text-rose-400 flex-shrink-0" />
+                <MapPin size={14} className="text-primary-400 flex-shrink-0" />
                 <span>ANTS Bénin — Quartier Saint-Michel, Cotonou</span>
               </li>
               <li className="flex items-center gap-2">
@@ -87,7 +87,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Mail size={14} className="text-rose-400 flex-shrink-0" />
+                <Mail size={14} className="text-primary-400 flex-shrink-0" />
                 <a
                   href="mailto:contact@lifesave.bj"
                   className="hover:text-white transition-colors"
@@ -108,11 +108,11 @@ export default function Footer() {
               href="https://portofoliolarissakoussey.netlify.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-rose-400 hover:text-rose-300 font-extrabold underline underline-offset-4 inline-flex items-center gap-1 transition-colors"
+              className="text-primary-400 hover:text-primary-300 font-extrabold underline underline-offset-4 inline-flex items-center gap-1 transition-colors"
               title="Visiter le portfolio de LARISSA KOUSSEY"
             >
               <span>LARISSA KOUSSEY</span>
-              <ExternalLink size={12} className="text-rose-400" />
+              <ExternalLink size={12} className="text-primary-400" />
             </a>
           </p>
         </div>

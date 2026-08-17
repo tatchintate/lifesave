@@ -60,14 +60,14 @@ function TypewriterTitle({ inView }) {
     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 md:text-white tracking-tight leading-tight min-h-[72px] sm:min-h-[96px]">
       <span>{text1}</span>
       {activeLine === 1 && (
-        <span className="inline-block w-1 sm:w-1.5 h-6 sm:h-10 bg-rose-600 md:bg-rose-500 ml-1.5 animate-pulse align-middle" />
+        <span className="inline-block w-1 sm:w-1.5 h-6 sm:h-10 bg-primary-600 dark:bg-primary-400 ml-1.5 animate-pulse align-middle" />
       )}
       {text1.length > 0 && <br />}
-      <span className="text-rose-600 md:text-rose-500">
+      <span className="text-primary-600 dark:text-primary-400">
         {text2}
       </span>
       {activeLine === 2 && (
-        <span className="inline-block w-1 sm:w-1.5 h-6 sm:h-10 bg-rose-600 md:bg-rose-500 ml-1.5 animate-pulse align-middle" />
+        <span className="inline-block w-1 sm:w-1.5 h-6 sm:h-10 bg-primary-600 dark:bg-primary-400 ml-1.5 animate-pulse align-middle" />
       )}
     </h2>
   );
@@ -125,13 +125,13 @@ export default function Eligibility() {
     setBloodType("inconnu");
     setIsFirstDonation(true);
     setLastDonationDate("");
-    setSelectedCity(availableCities[0] || "Cotonou");
+    setSelectedCity("Cotonou");
     setResult(null);
   };
 
   const scrollToCentres = () => {
     setIsModalOpen(false);
-    const target = document.querySelector("#centres");
+    const target = document.querySelector("#ou-donner");
     if (target) {
       const offset = 80;
       const top =
@@ -144,16 +144,16 @@ export default function Eligibility() {
     <section
       ref={sectionRef}
       id="eligibilite"
-      className="py-12 sm:py-16 bg-[#F5F4F0] md:bg-[#181716] text-neutral-900 md:text-white border-t border-neutral-200 md:border-neutral-800 relative overflow-hidden transition-colors"
+      className="py-12 sm:py-16 bg-[#FAF7F2] dark:bg-[#181716] text-neutral-900 dark:text-white border-t border-neutral-200/80 dark:border-neutral-800 relative overflow-hidden transition-colors"
     >
-      {/* Halo décoratif rouge très doux en arrière-plan (Desktop) */}
+      {/* Halo décoratif bleu très doux en arrière-plan (Desktop) */}
       <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary-600/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-8 relative z-10">
-        {/* En-tête centré avec écriture lettre par lettre */}
+        {/* En-tête centré avec écriture lettre par lettre - TITRE EN BLEU */}
         <div className="flex flex-col items-center justify-center text-center mb-10 sm:mb-12 gap-6">
           <div>
-            <span className="inline-block text-xs sm:text-sm font-bold tracking-widest uppercase text-rose-700 md:text-rose-400 py-1">
+            <span className="inline-block text-xs sm:text-sm font-bold tracking-widest uppercase text-primary-700 dark:text-primary-400 py-1">
               Éligibilité au don
             </span>
           </div>
@@ -163,8 +163,8 @@ export default function Eligibility() {
         </div>
 
         {/* Le CARD complet sautille/flotte gentiment */}
-        <div className="bg-white md:bg-[#211F1D] rounded-3xl p-6 sm:p-10 border border-neutral-200/80 md:border-neutral-800/80 shadow-md md:shadow-2xl mb-10 animate-float-bounce hover:border-rose-300 md:hover:border-primary-500/30 transition-all">
-          <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 md:text-white mb-6 tracking-tight">
+        <div className="bg-white dark:bg-[#211F1D] rounded-3xl p-6 sm:p-10 border border-neutral-200/80 dark:border-neutral-800/80 shadow-md dark:shadow-2xl mb-10 animate-float-bounce hover:border-primary-400 dark:hover:border-primary-500/30 transition-all">
+          <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-6 tracking-tight">
             Critères généraux
           </h3>
 
@@ -172,15 +172,15 @@ export default function Eligibility() {
             {GENERAL_CRITERIA.map((criterion, idx) => (
               <li key={idx} className="flex items-start gap-3.5 group">
                 {criterion.type === "success" ? (
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 md:bg-emerald-950/80 border border-emerald-200 md:border-emerald-600/60 flex items-center justify-center text-emerald-700 md:text-emerald-400 mt-0.5">
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-600/60 flex items-center justify-center text-emerald-700 dark:text-emerald-400 mt-0.5">
                     <CheckCircle2 size={16} />
                   </div>
                 ) : (
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-rose-100 md:bg-rose-950/80 border border-rose-200 md:border-rose-600/60 flex items-center justify-center text-rose-700 md:text-rose-400 mt-0.5">
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-950/80 border border-rose-200 dark:border-rose-600/60 flex items-center justify-center text-rose-700 dark:text-rose-400 mt-0.5">
                     <AlertTriangle size={15} />
                   </div>
                 )}
-                <span className="text-sm sm:text-base text-neutral-800 md:text-neutral-200 font-medium leading-relaxed">
+                <span className="text-sm sm:text-base text-neutral-800 dark:text-neutral-200 font-medium leading-relaxed">
                   {criterion.text}
                 </span>
               </li>
@@ -188,22 +188,22 @@ export default function Eligibility() {
           </ul>
 
           {/* Sub-text obligatoire en bas du bloc */}
-          <div className="mt-8 pt-6 border-t border-neutral-100 md:border-neutral-800 text-center sm:text-left">
-            <p className="text-xs sm:text-sm text-neutral-500 md:text-neutral-400 italic">
+          <div className="mt-8 pt-6 border-t border-neutral-100 dark:border-neutral-800 text-center sm:text-left">
+            <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 italic">
               Seul un entretien médical professionnel peut confirmer définitivement votre aptitude au don.
             </p>
           </div>
         </div>
 
 
-        {/* Bouton d'action principal centré sous le bloc */}
+        {/* Bouton d'action principal centré sous le bloc - BOUTON ROSE */}
         <div className="flex flex-col items-center justify-center">
           <button
             onClick={() => {
               setIsModalOpen(true);
               setResult(null);
             }}
-            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-base sm:text-lg font-bold text-white bg-rose-600 hover:bg-rose-500 rounded-2xl shadow-xl shadow-rose-600/30 transition-all duration-300 animate-vibrate hover:scale-[1.05] active:scale-[0.98] cursor-pointer"
+            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-base sm:text-lg font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-2xl shadow-xl shadow-rose-600/30 transition-all duration-300 animate-vibrate hover:scale-[1.05] active:scale-[0.98] cursor-pointer"
           >
             <Sparkles size={20} className="text-rose-200 animate-pulse" />
             <span>Vérifier mon éligibilité</span>
@@ -212,28 +212,27 @@ export default function Eligibility() {
               className="transition-transform group-hover:translate-x-1"
             />
           </button>
-          <span className="mt-2.5 text-xs text-neutral-600 md:text-neutral-400 font-medium">
-
+          <span className="mt-2.5 text-xs text-neutral-600 dark:text-neutral-400 font-medium">
             Test gratuit, anonyme & instantané (1 minute)
           </span>
         </div>
       </div>
 
-      {/* Modal interactif d'éligibilité avec des COULEURS DOUCES & CALMES (Rose Médical Doux) */}
+      {/* Modal interactif d'éligibilité avec Formulaire Unifié */}
       {isModalOpen && (
         <div
           className="fixed inset-0 z-50 bg-neutral-950/75 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto animate-fade-in"
           onClick={() => setIsModalOpen(false)}
         >
           <div
-            className="relative w-full max-w-xl bg-white text-neutral-900 rounded-3xl overflow-hidden shadow-2xl border border-neutral-200/80 my-8"
+            className="relative w-full max-w-xl bg-white dark:bg-[#211F1D] text-neutral-900 dark:text-white rounded-3xl overflow-hidden shadow-2xl border border-neutral-200/80 dark:border-neutral-800 my-8"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header du Modal avec Rose Médical Apaisant */}
-            <div className="bg-gradient-to-r from-primary-600 via-primary-500 to-rose-500 p-6 text-white relative">
+            {/* Header du Modal - EN HAUT TOUT EN BLEU */}
+            <div className="bg-primary-600 p-6 text-white relative">
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors backdrop-blur-sm"
+                className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors backdrop-blur-sm cursor-pointer"
                 aria-label="Fermer"
               >
                 <X size={20} />
@@ -252,21 +251,21 @@ export default function Eligibility() {
               </p>
             </div>
 
-            {/* Corps du Formulaire avec Couleurs Douces & Agréables */}
-            <div className="p-6 sm:p-8 space-y-5 max-h-[75vh] overflow-y-auto bg-neutral-50/50">
+            {/* Corps du Formulaire avec Couleurs Unifiées */}
+            <div className="p-6 sm:p-8 space-y-5 max-h-[75vh] overflow-y-auto bg-neutral-50/50 dark:bg-[#1A1817]">
               <form onSubmit={handleSubmit} className="space-y-5">
                 {/* 1. Sélecteur de Genre */}
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-2">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-2">
                     1. Votre Sexe
                   </label>
                   <div className="grid grid-cols-2 gap-3">
                     <button
                       type="button"
                       onClick={() => setGender("femme")}
-                      className={`py-3 px-4 rounded-xl text-sm font-bold border transition-all ${gender === "femme"
-                        ? "bg-primary-600 text-white border-primary-600 shadow-md shadow-primary-600/20"
-                        : "bg-white text-neutral-700 border-neutral-200 hover:bg-neutral-100"
+                      className={`py-3 px-4 rounded-xl text-sm font-bold border transition-all cursor-pointer ${gender === "femme"
+                        ? "bg-rose-600 text-white border-rose-600 shadow-md shadow-rose-600/20"
+                        : "bg-white dark:bg-[#2A2725] text-neutral-700 dark:text-neutral-200 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-[#322F2C]"
                         }`}
                     >
                       Femme
@@ -274,9 +273,9 @@ export default function Eligibility() {
                     <button
                       type="button"
                       onClick={() => setGender("homme")}
-                      className={`py-3 px-4 rounded-xl text-sm font-bold border transition-all ${gender === "homme"
-                        ? "bg-primary-600 text-white border-primary-600 shadow-md shadow-primary-600/20"
-                        : "bg-white text-neutral-700 border-neutral-200 hover:bg-neutral-100"
+                      className={`py-3 px-4 rounded-xl text-sm font-bold border transition-all cursor-pointer ${gender === "homme"
+                        ? "bg-rose-600 text-white border-rose-600 shadow-md shadow-rose-600/20"
+                        : "bg-white dark:bg-[#2A2725] text-neutral-700 dark:text-neutral-200 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-[#322F2C]"
                         }`}
                     >
                       Homme
@@ -289,7 +288,7 @@ export default function Eligibility() {
                   <div>
                     <label
                       htmlFor="modal-input-age"
-                      className="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1.5"
+                      className="block text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5"
                     >
                       2. Âge (ans)
                     </label>
@@ -302,13 +301,13 @@ export default function Eligibility() {
                       required
                       min="1"
                       max="120"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#2A2725] border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-rose-500 transition-all"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="modal-input-weight"
-                      className="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1.5"
+                      className="block text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5"
                     >
                       3. Poids (kg)
                     </label>
@@ -321,7 +320,7 @@ export default function Eligibility() {
                       required
                       min="1"
                       max="300"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#2A2725] border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-rose-500 transition-all"
                     />
                   </div>
                 </div>
@@ -330,16 +329,16 @@ export default function Eligibility() {
                 <div>
                   <label
                     htmlFor="modal-input-blood"
-                    className="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1.5 flex items-center gap-1.5"
+                    className="block text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5 flex items-center gap-1.5"
                   >
-                    <Droplet size={14} className="text-primary-600" />
+                    <Droplet size={14} className="text-primary-600 dark:text-primary-400" />
                     <span>4. Votre Groupe Sanguin (Optionnel)</span>
                   </label>
                   <select
                     id="modal-input-blood"
                     value={bloodType}
                     onChange={(e) => setBloodType(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#2A2725] border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-rose-500 transition-all"
                   >
                     <option value="inconnu">Je ne connais pas mon groupe</option>
                     <option value="O-">O- (Donneur universel d'hématies)</option>
@@ -357,16 +356,16 @@ export default function Eligibility() {
                 <div>
                   <label
                     htmlFor="modal-input-city"
-                    className="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1.5 flex items-center gap-1.5"
+                    className="block text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5 flex items-center gap-1.5"
                   >
-                    <MapPin size={14} className="text-primary-600" />
+                    <MapPin size={14} className="text-primary-600 dark:text-primary-400" />
                     <span>5. Votre Ville au Bénin</span>
                   </label>
                   <select
                     id="modal-input-city"
                     value={selectedCity}
                     onChange={(e) => setSelectedCity(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#2A2725] border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-rose-500 transition-all"
                   >
                     {availableCities.map((city) => (
                       <option key={city} value={city}>
@@ -383,9 +382,9 @@ export default function Eligibility() {
                       type="checkbox"
                       checked={isFirstDonation}
                       onChange={(e) => setIsFirstDonation(e.target.checked)}
-                      className="w-5 h-5 text-primary-600 rounded focus:ring-primary-500 border-neutral-300 cursor-pointer"
+                      className="w-5 h-5 text-rose-600 rounded focus:ring-rose-500 border-neutral-300 cursor-pointer"
                     />
-                    <span className="text-sm font-semibold text-neutral-800">
+                    <span className="text-sm font-semibold text-neutral-800 dark:text-neutral-200">
                       C'est mon premier don de sang (aucun don antérieur)
                     </span>
                   </label>
@@ -396,7 +395,7 @@ export default function Eligibility() {
                   <div className="animate-fade-up">
                     <label
                       htmlFor="modal-input-last-date"
-                      className="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1.5"
+                      className="block text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5"
                     >
                       Date de votre dernier don
                     </label>
@@ -406,16 +405,16 @@ export default function Eligibility() {
                       value={lastDonationDate}
                       onChange={(e) => setLastDonationDate(e.target.value)}
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#2A2725] border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-rose-500 transition-all"
                     />
                   </div>
                 )}
 
-                {/* Boutons du Formulaire */}
+                {/* Boutons du Formulaire - BOUTON SOUMISSION ROSE */}
                 <div className="flex items-center gap-3 pt-3">
                   <button
                     type="submit"
-                    className="flex-1 py-3.5 px-6 rounded-2xl bg-primary-600 hover:bg-primary-700 text-white font-bold text-sm shadow-lg shadow-primary-600/20 transition-all flex items-center justify-center gap-2"
+                    className="flex-1 py-3.5 px-6 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm shadow-lg shadow-rose-600/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Lancer la vérification</span>
                     <ArrowRight size={18} />
@@ -423,7 +422,7 @@ export default function Eligibility() {
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="p-3 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-200/60 rounded-xl transition-colors"
+                    className="p-3 text-neutral-500 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800 rounded-xl transition-colors cursor-pointer"
                     title="Réinitialiser"
                   >
                     <RotateCcw size={18} />

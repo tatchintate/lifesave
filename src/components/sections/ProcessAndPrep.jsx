@@ -121,7 +121,7 @@ export default function ProcessAndPrep() {
     <section
       ref={sectionRef}
       id="deroulement"
-      className="py-16 sm:py-24 bg-white dark:bg-slate-950 border-t border-neutral-200/80 dark:border-slate-800 relative overflow-hidden"
+      className="py-16 sm:py-24 bg-[#FDFBF7] dark:bg-slate-950 border-t border-neutral-200/80 dark:border-slate-800 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         {/* En-tête de section */}
@@ -131,7 +131,7 @@ export default function ProcessAndPrep() {
           </span>
           <span className="bg-primary-100/70 dark:bg-primary-950/60 w-10 border border-primary-200/80 dark:border-primary-800 rounded-full px-1 py-0.5 mb-2" />
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight leading-tight">
-            45 minutes, <span className="text-rose-600 dark:text-rose-500">dont 10 de prélèvement.</span>
+            45 minutes, <span className="text-primary-600 dark:text-primary-400">dont 10 de prélèvement.</span>
           </h2>
           <p className="text-base sm:text-lg text-neutral-600 dark:text-slate-300 leading-relaxed max-w-2xl">
             La grande majorité du temps sert à vous accueillir, vous écouter et vous remettre d'aplomb. Voici exactement ce qui vous attend étape par étape.
@@ -150,12 +150,12 @@ export default function ProcessAndPrep() {
                 }}
                 className={`group relative rounded-3xl p-6 sm:p-7 border cursor-pointer transition-all duration-500 flex flex-col justify-between hover:-translate-y-1.5 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   } ${highlight
-                    ? "bg-gradient-to-b from-white via-rose-50/40 to-white dark:from-slate-800 dark:via-rose-950/20 dark:to-slate-800 border-rose-500 shadow-md ring-2 ring-rose-500/20 hover:shadow-xl hover:shadow-rose-500/10"
+                    ? "bg-gradient-to-b from-white via-primary-50/40 to-white dark:from-slate-800 dark:via-primary-950/20 dark:to-slate-800 border-primary-500 shadow-md ring-2 ring-primary-500/20 hover:shadow-xl hover:shadow-primary-500/10"
                     : "bg-white dark:bg-slate-800/90 border-neutral-200/80 dark:border-slate-700/80 shadow-xs hover:shadow-md hover:border-primary-300 dark:hover:border-primary-600"
                   }`}
               >
                 {highlight && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-rose-600 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-md flex items-center gap-1">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary-600 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-md flex items-center gap-1">
                     <HeartPulse size={12} className="animate-pulse" /> Étape clé
                   </span>
                 )}
@@ -165,7 +165,7 @@ export default function ProcessAndPrep() {
                     {/* Numéro d'étape */}
                     <div
                       className={`w-12 h-12 rounded-2xl flex items-center justify-center text-center font-black text-lg leading-none transition-transform group-hover:scale-105 duration-300 ${highlight
-                        ? "bg-rose-600 text-white shadow-md shadow-rose-600/30"
+                        ? "bg-primary-600 text-white shadow-md shadow-primary-600/30"
                         : "bg-neutral-100 dark:bg-slate-700 text-neutral-800 dark:text-slate-100 group-hover:bg-primary-100 dark:group-hover:bg-primary-950 group-hover:text-primary-700 dark:group-hover:text-primary-300"
                         }`}
                     >
@@ -173,7 +173,7 @@ export default function ProcessAndPrep() {
                     </div>
                     <span
                       className={`text-xs font-extrabold px-3 py-1 rounded-full ${highlight
-                        ? "bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300"
+                        ? "bg-primary-100 dark:bg-primary-950/80 text-primary-700 dark:text-primary-300"
                         : "bg-neutral-100 dark:bg-slate-700 text-neutral-600 dark:text-slate-300"
                         }`}
                     >
@@ -184,7 +184,7 @@ export default function ProcessAndPrep() {
                   <div className="flex items-center gap-2.5 mb-2">
                     <Icon
                       size={22}
-                      className={`transition-colors ${highlight ? "text-rose-600 dark:text-rose-400" : "text-neutral-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400"
+                      className={`transition-colors ${highlight ? "text-primary-600 dark:text-primary-400" : "text-neutral-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400"
                         }`}
                     />
                     <h3 className="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">
@@ -213,7 +213,7 @@ export default function ProcessAndPrep() {
         >
           <div className="flex items-center justify-between flex-wrap gap-4 mb-8 relative z-10">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-rose-600/20 border border-rose-500/40 flex items-center justify-center text-rose-400 shadow-md">
+              <div className="w-10 h-10 rounded-xl bg-primary-600/20 border border-primary-500/40 flex items-center justify-center text-primary-400 shadow-md">
                 <Sparkles size={20} />
               </div>
               <div>
@@ -226,7 +226,7 @@ export default function ProcessAndPrep() {
               </div>
             </div>
 
-            <span className="text-xs font-black uppercase tracking-widest text-rose-400 bg-rose-950/60 border border-rose-800/60 px-3.5 py-1.5 rounded-full shadow-inner">
+            <span className="text-xs font-black uppercase tracking-widest text-primary-300 bg-primary-950/60 border border-primary-800/60 px-3.5 py-1.5 rounded-full shadow-inner">
               💡 Recommandations EFS & ANTS
             </span>
           </div>
@@ -239,7 +239,7 @@ export default function ProcessAndPrep() {
                 type="button"
                 onClick={() => setActivePrepTab(idx)}
                 className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all text-center ${activePrepTab === idx
-                    ? "bg-rose-600 text-white shadow-md font-extrabold"
+                    ? "bg-primary-600 text-white shadow-md font-extrabold"
                     : "text-slate-400 hover:text-white"
                   }`}
               >
@@ -323,7 +323,7 @@ export default function ProcessAndPrep() {
           </div>
 
           <div className="mt-8 pt-6 border-t border-slate-800 flex items-center gap-2.5 text-xs text-slate-400 italic justify-center sm:justify-start relative z-10">
-            <Info size={16} className="text-rose-400 flex-shrink-0" />
+            <Info size={16} className="text-primary-400 flex-shrink-0" />
             <span>Un donneur bien hydraté et reposé garantit une expérience 100% sereine et un don rapide !</span>
           </div>
         </div>
@@ -339,10 +339,10 @@ export default function ProcessAndPrep() {
             className="relative w-full max-w-lg bg-white rounded-3xl overflow-hidden shadow-2xl border border-neutral-200"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="bg-rose-600 p-6 text-white relative">
+            <div className="bg-primary-600 p-6 text-white relative">
               <button
                 onClick={() => setActiveStepModal(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors"
+                className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors cursor-pointer"
                 aria-label="Fermer"
               >
                 <X size={20} />
@@ -352,7 +352,7 @@ export default function ProcessAndPrep() {
                   Étape {activeStepModal.num}
                 </span>
 
-                <span className="text-xs font-bold uppercase tracking-wider text-rose-100 bg-white/10 px-2.5 py-0.5 rounded-full">
+                <span className="text-xs font-bold uppercase tracking-wider text-primary-100 bg-white/10 px-2.5 py-0.5 rounded-full">
                   Durée : {activeStepModal.duration}
                 </span>
               </div>
@@ -366,13 +366,13 @@ export default function ProcessAndPrep() {
 
               <div className="pt-3">
                 <h4 className="text-xs font-extrabold uppercase tracking-wider text-neutral-500 mb-3 flex items-center gap-1.5">
-                  <ShieldCheck size={16} className="text-rose-600" />
+                  <ShieldCheck size={16} className="text-primary-600" />
                   Détails & Garanties de cette étape :
                 </h4>
                 <ul className="space-y-2.5">
                   {activeStepModal.details.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700">
-                      <div className="w-5 h-5 rounded-full bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-600 flex-shrink-0 mt-0.5">
+                      <div className="w-5 h-5 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center text-primary-600 flex-shrink-0 mt-0.5">
                         <Check size={13} />
                       </div>
                       <span>{item}</span>
@@ -384,7 +384,7 @@ export default function ProcessAndPrep() {
               <div className="pt-4 flex justify-end">
                 <button
                   onClick={() => setActiveStepModal(null)}
-                  className="px-6 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-sm transition-colors cursor-pointer"
+                  className="px-6 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-md shadow-rose-600/20 transition-colors cursor-pointer"
                 >
                   Compris, fermer
                 </button>

@@ -136,19 +136,19 @@ function TypewriterTitle() {
     <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-[3.35rem] xl:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
       <span>{text1}</span>
       {activeLine === 1 && (
-        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-rose-500 ml-1.5 animate-pulse align-middle" />
+        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-primary-400 ml-1.5 animate-pulse align-middle" />
       )}
       <br />
-      <span className="text-rose-500 font-serif italic font-normal">
+      <span className="text-primary-400 font-serif italic font-normal">
         {text2}
       </span>
       {activeLine === 2 && (
-        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-rose-500 ml-1.5 animate-pulse align-middle" />
+        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-primary-400 ml-1.5 animate-pulse align-middle" />
       )}
       {text2.length > 0 && <br />}
       <span>{text3}</span>
       {activeLine === 3 && (
-        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-rose-500 ml-1.5 animate-pulse align-middle" />
+        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-primary-400 ml-1.5 animate-pulse align-middle" />
       )}
     </h1>
   );
@@ -168,7 +168,7 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center pt-24 xs:pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16 md:pb-24 overflow-hidden bg-[#0B1528] text-white">
-      {/* Image de fond hero.jpg sous filtre bleu nuit & corail */}
+      {/* Image de fond hero.jpg sous filtre bleu nuit & cerulean */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src={heroImg}
@@ -192,18 +192,15 @@ export default function Hero() {
             Êtes-vous prêt à faire la différence ?
           </p>
 
-          {/* Boutons d'action pillules - HARMONISATION DUAL-TONE */}
+          {/* Boutons d'action pillules - BOUTON PRINCIPAL ROSE */}
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Button
               variant="glow"
               size="lg"
               onClick={() => scrollToSection("#eligibilite")}
-              className="bg-rose-600 hover:bg-rose-700 text-white rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 shadow-sm shadow-rose-400/20 border-none font-bold text-xs sm:text-sm lg:text-base"
-
-
-
+              className="bg-rose-600 hover:bg-rose-700 text-white rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 shadow-md shadow-rose-600/20 border-none font-bold text-xs sm:text-sm lg:text-base cursor-pointer"
             >
-              <span className="">Vérifier mon éligibilité</span>
+              <span>Vérifier mon éligibilité</span>
               <ArrowRight size={16} />
             </Button>
 
@@ -211,7 +208,7 @@ export default function Hero() {
               variant="glass"
               size="lg"
               onClick={() => scrollToSection("#deroulement")}
-              className="bg-white/10 hover:bg-white/20 text-white border-white/20 rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 font-semibold backdrop-blur-md text-xs sm:text-sm lg:text-base"
+              className="bg-white/10 hover:bg-white/20 text-white border-white/20 rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 font-semibold backdrop-blur-md text-xs sm:text-sm lg:text-base cursor-pointer"
             >
               <span className="whitespace-nowrap">Comment ça se passe ?</span>
             </Button>
@@ -225,14 +222,14 @@ export default function Hero() {
               <span className="text-[10px] xs:text-xs font-bold uppercase tracking-wider text-slate-400">
                 Informations & Vidéo
               </span>
-              <span className="text-[10px] xs:text-xs text-rose-400 font-semibold whitespace-nowrap bg-rose-500/10 px-2.5 py-1 rounded-full border border-rose-500/20">
+              <span className="text-[10px] xs:text-xs text-primary-300 font-semibold whitespace-nowrap bg-primary-500/10 px-2.5 py-1 rounded-full border border-primary-500/20">
                 1 don = 3 vies
               </span>
             </div>
 
             <HeroVideo />
 
-            {/* CARDS - Repères rapides avec reflets bleu sapphire et touches corail */}
+            {/* CARDS - Repères rapides avec reflets bleu sapphire */}
             <div ref={cardsRef} className="grid grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
               {INFO_CARDS.map(({ icon: Icon, label, description, href }, index) => (
                 <div
@@ -243,7 +240,7 @@ export default function Hero() {
                     }`}
                 >
                   <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-2.5">
-                    <div className="p-1 sm:p-1.5 lg:p-2 rounded-lg bg-rose-500/10 text-rose-400 group-hover:bg-rose-600 group-hover:text-white transition-colors duration-300 flex-shrink-0">
+                    <div className="p-1 sm:p-1.5 lg:p-2 rounded-lg bg-primary-500/10 text-primary-400 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300 flex-shrink-0">
                       <Icon size={14} className="sm:size-[15px] lg:size-[17px]" />
                     </div>
                     <span className="text-[10px] xs:text-xs sm:text-sm lg:text-[15px] font-bold text-white group-hover:text-primary-300 transition-colors leading-tight">

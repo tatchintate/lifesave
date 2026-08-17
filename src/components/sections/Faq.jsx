@@ -53,7 +53,7 @@ export default function Faq() {
     <section
       ref={sectionRef}
       id="faq"
-      className="py-16 sm:py-20 bg-[#FAF9F8] dark:bg-slate-900 border-t border-neutral-200/80 dark:border-slate-800 transition-colors"
+      className="py-16 sm:py-20 bg-[#FAF7F2] dark:bg-slate-900 border-t border-neutral-200/80 dark:border-slate-800 transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         {/* En-tête de section centré */}
@@ -63,7 +63,7 @@ export default function Faq() {
           </span>
           <span className="bg-primary-100/70 dark:bg-primary-950/60 w-10 border border-primary-200/80 dark:border-primary-800 rounded-full px-1 py-0.5 mb-2" />
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight leading-tight">
-            Tout ce que vous devez savoir pour donner <span className="text-rose-600 dark:text-rose-500">en toute confiance.</span>
+            Tout ce que vous devez savoir pour donner <span className="text-primary-600 dark:text-primary-400">en toute confiance.</span>
           </h2>
         </div>
 
@@ -157,7 +157,7 @@ export default function Faq() {
             </div>
             <a
               href="#ou-donner"
-              className="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-xs transition-all whitespace-nowrap"
+              className="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-md shadow-rose-600/20 transition-all whitespace-nowrap"
             >
               Trouver un centre
             </a>

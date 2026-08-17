@@ -42,7 +42,7 @@ export default function WhyGive() {
     <section
       ref={sectionRef}
       id="pourquoi"
-      className="py-16 sm:py-20 bg-surface/40 dark:bg-slate-900/60 border-t border-neutral-200/60 dark:border-slate-800 transition-colors"
+      className="py-16 sm:py-20 bg-[#FAF7F2] dark:bg-slate-900/60 border-t border-neutral-200/60 dark:border-slate-800 transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         {/* En-tête de section */}
@@ -66,7 +66,7 @@ export default function WhyGive() {
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight leading-tight mb-4">
                 Le sang ne se fabrique pas.
-                <span className="text-rose-600 dark:text-rose-500"> Il se donne.</span>
+                <span className="text-primary-600 dark:text-primary-400"> Il se donne.</span>
               </h2>
               <p className="text-base text-justify sm:text-lg text-neutral-600 dark:text-slate-300 leading-relaxed">
                 Aucun laboratoire ne sait produire du sang humain. Chaque poche
@@ -126,7 +126,7 @@ export default function WhyGive() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-neutral-950/20 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
-                <span className="inline-block text-xs font-bold uppercase tracking-wider text-rose-300 bg-neutral-950/80 backdrop-blur-md px-3 py-1 rounded-full mb-2 border border-rose-500/30">
+                <span className="inline-block text-xs font-bold uppercase tracking-wider text-primary-300 bg-neutral-950/80 backdrop-blur-md px-3 py-1 rounded-full mb-2 border border-primary-500/30">
                   Solidarité & Don de Soi
                 </span>
                 <p className="text-white text-base sm:text-lg font-bold leading-snug">

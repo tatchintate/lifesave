@@ -14,7 +14,7 @@ import "./Styles.css";
 
 function AppContent() {
   return (
-    <div className="min-h-screen bg-[#FAF9F8] dark:bg-[#0B1528] text-neutral-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300 selection:bg-primary-500 selection:text-white">
+    <div className="min-h-screen bg-[#F8F6F1] dark:bg-[#0B1528] text-neutral-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300 selection:bg-primary-500 selection:text-white">
       <Navbar />
       <main>
         <Hero />

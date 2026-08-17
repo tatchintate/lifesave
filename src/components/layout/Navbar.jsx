@@ -115,8 +115,10 @@ export default function Navbar() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 transform",
         visible ? "translate-y-0" : "-translate-y-full",
         scrolled
-          ? "bg-white/90 dark:bg-[#0B1528]/90 backdrop-blur-md border-b border-neutral-200/80 dark:border-slate-800 shadow-xs py-3"
-          : "bg-transparent py-4 sm:py-5"
+          ? isDark
+            ? "bg-[#0B1528]/95 border-b border-slate-800 shadow-md py-3 text-white"
+            : "bg-[#F8F6F1]/95 backdrop-blur-md border-b border-neutral-200/80 shadow-xs py-3 text-neutral-900"
+          : "bg-transparent py-4 sm:py-5 text-white"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
@@ -131,7 +133,9 @@ export default function Navbar() {
         >
           <Logo className="transition-transform duration-300 group-hover:scale-105" />
           <span className="text-xl sm:text-2xl font-extrabold tracking-tight">
-            <span className="text-neutral-900 dark:text-white">Life</span>
+            <span className={scrolled ? (isDark ? "text-white" : "text-neutral-900") : "text-white"}>
+              Life
+            </span>
             <span className="text-primary-600 dark:text-primary-400">Save</span>
           </span>
         </a>
@@ -140,10 +144,20 @@ export default function Navbar() {
         <nav
           ref={navContainerRef}
           onMouseLeave={() => setHoveredHref(null)}
-          className="hidden lg:flex items-center gap-1 relative px-1 py-1 rounded-full bg-neutral-100/60 dark:bg-slate-800/60 border border-neutral-200/50 dark:border-slate-700/50 backdrop-blur-sm"
+          className={cn(
+            "hidden lg:flex items-center gap-1 relative px-1 py-1 rounded-full backdrop-blur-sm transition-colors",
+            scrolled
+              ? "bg-neutral-200/50 dark:bg-slate-800/60 border border-neutral-300/60 dark:border-slate-700/50"
+              : "bg-slate-900/60 border border-white/15"
+          )}
         >
           <div
-            className="absolute top-1 bottom-1 bg-white dark:bg-slate-700 rounded-full shadow-sm border border-neutral-200/60 dark:border-slate-600 transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none"
+            className={cn(
+              "absolute top-1 bottom-1 rounded-full shadow-xs border transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none",
+              scrolled
+                ? "bg-white dark:bg-slate-700 border-neutral-200/60 dark:border-slate-600"
+                : "bg-white/20 border-white/30 backdrop-blur-md"
+            )}
             style={{
               left: `${indicatorStyle.left}px`,
               width: `${indicatorStyle.width}px`,
@@ -164,9 +178,13 @@ export default function Navbar() {
                 className={cn(
                   "relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-colors duration-200",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500",
-                  isActive
-                    ? "text-primary-700 dark:text-primary-300 font-bold"
-                    : "text-neutral-600 dark:text-slate-300 hover:text-neutral-900 dark:hover:text-white"
+                  scrolled
+                    ? isActive
+                      ? "text-primary-700 dark:text-primary-300 font-bold"
+                      : "text-neutral-700 dark:text-slate-300 hover:text-neutral-900 dark:hover:text-white"
+                    : isActive
+                    ? "text-white font-bold"
+                    : "text-slate-200 hover:text-white"
                 )}
               >
                 {link.label}
@@ -175,24 +193,29 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Action Desktop : Bouton Theme Switcher + CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Action Desktop : Bouton Theme Switcher + CTA ROSE */}
+        <div className="hidden lg:flex items-center gap-3">
           {/* Toggle Thème (Clair / Sombre) */}
           <button
             onClick={toggleTheme}
             type="button"
-            className="p-2.5 rounded-full bg-neutral-100 dark:bg-slate-800 text-neutral-700 dark:text-slate-200 border border-neutral-200 dark:border-slate-700 hover:bg-neutral-200 dark:hover:bg-slate-700 transition-all cursor-pointer"
+            className={cn(
+              "p-2.5 rounded-full border transition-all cursor-pointer",
+              scrolled
+                ? "bg-neutral-100 dark:bg-slate-800 text-neutral-700 dark:text-slate-200 border-neutral-200 dark:border-slate-700 hover:bg-neutral-200 dark:hover:bg-slate-700"
+                : "bg-white/10 text-white border-white/20 hover:bg-white/20"
+            )}
             title={isDark ? "Passer au mode clair" : "Passer au mode sombre"}
             aria-label="Basculer le thème"
           >
-            {isDark ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-slate-700" />}
+            {isDark ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className={scrolled ? "text-slate-700" : "text-amber-300"} />}
           </button>
 
           <Button
             variant="glow"
             size="sm"
             onClick={(e) => handleLinkClick("#ou-donner", e)}
-            className="bg-rose-600 hover:bg-rose-700 text-white shadow-md shadow-rose-600/20"
+            className="bg-rose-600 hover:bg-rose-700 text-white shadow-md shadow-rose-600/20 cursor-pointer"
           >
             <MapPin size={15} />
             <span>Trouver un centre</span>
@@ -268,7 +291,7 @@ export default function Navbar() {
               size="md"
               fullWidth
               onClick={(e) => handleLinkClick("#ou-donner", e)}
-              className="bg-rose-600 hover:bg-rose-700 text-white shadow-md shadow-rose-600/20"
+              className="bg-rose-600 hover:bg-rose-700 text-white shadow-md shadow-rose-600/20 cursor-pointer"
             >
               <MapPin size={16} />
               <span>Trouver un centre de don</span>

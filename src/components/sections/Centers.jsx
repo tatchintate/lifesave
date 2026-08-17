@@ -227,7 +227,7 @@ export default function Centers() {
   return <section
     ref={sectionRef}
     id="ou-donner"
-    className="py-16 sm:py-24 bg-surface/30 dark:bg-slate-900/60 border-t border-neutral-200/80 dark:border-slate-800 relative overflow-hidden transition-colors"
+    className="py-16 sm:py-24 bg-[#F5F2EC] dark:bg-slate-900/60 border-t border-neutral-200/80 dark:border-slate-800 relative overflow-hidden transition-colors"
   >
     <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
       {/* En-tête de section */}
@@ -235,7 +235,7 @@ export default function Centers() {
         className={`flex flex-col mb-10 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
       >
-        <div className="flex flex-col mb-6">
+        <div className="flex flex-col items-center justify-center">
           <span className="inline-block text-sm font-bold tracking-widest uppercase text-primary-700 dark:text-primary-400 py-1">
             Répertoire des centres
           </span>
@@ -244,7 +244,7 @@ export default function Centers() {
 
         <div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight leading-tight mb-3">
-            Trouver un centre <span className="text-rose-600 dark:text-rose-500">près de chez vous</span>
+            Trouver un centre <span className="text-primary-600 dark:text-primary-400">près de chez vous</span>
           </h2>
 
           <p className="text-base sm:text-lg text-neutral-600 dark:text-slate-300 leading-relaxed max-w-3xl">
@@ -262,10 +262,10 @@ export default function Centers() {
           className="w-full flex items-center justify-between bg-white dark:bg-slate-800 px-4 py-3.5 rounded-2xl border border-neutral-200/80 dark:border-slate-700 shadow-sm font-bold text-xs text-neutral-800 dark:text-slate-100 active:bg-neutral-50 dark:active:bg-slate-700 transition-colors"
         >
           <div className="flex items-center gap-2">
-            <Filter size={16} className="text-rose-600 dark:text-rose-400" />
+            <Filter size={16} className="text-primary-600 dark:text-primary-400" />
             <span>Filtres de recherche</span>
             {(selectedCity !== "Toutes" || selectedType !== "Tous" || selectedStatus !== "Tous" || onlyUrgent || onlyMobile) && (
-              <span className="bg-rose-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">Filtre actif</span>
+              <span className="bg-primary-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">Filtre actif</span>
             )}
           </div>
           <ChevronDown size={16} className={`text-neutral-500 dark:text-slate-400 transition-transform duration-300 ${isMobileFilterOpen ? "rotate-180" : ""}`} />
@@ -294,7 +294,7 @@ export default function Centers() {
             <button
               onClick={handleGeolocate}
               disabled={isLocating}
-              className="w-full py-2.5 px-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-sm transition-colors flex items-center justify-center gap-2 active:scale-[0.98] disabled:opacity-75"
+              className="w-full py-2.5 px-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-md shadow-rose-600/20 transition-colors flex items-center justify-center gap-2 active:scale-[0.98] disabled:opacity-75 cursor-pointer"
             >
               {isLocating ? (
                 <>
@@ -585,7 +585,7 @@ export default function Centers() {
                         href={mapsUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="py-2 px-2 rounded-lg bg-primary-600 hover:bg-primary-700 text-white text-[11px] font-bold transition-colors text-center flex items-center justify-center gap-1 shadow-xs"
+                        className="py-2 px-2 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-[11px] font-bold transition-colors text-center flex items-center justify-center gap-1 shadow-xs"
                       >
                         <Navigation size={12} />
                         <span>Itinéraire</span>
