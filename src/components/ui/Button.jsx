@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import { cn } from "../../lib/utils";
 
-const baseStyles = "relative inline-flex items-center justify-center gap-2.5 rounded-full font-semibold transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none active:scale-95 active:duration-100 overflow-hidden group";
+const baseStyles = "relative inline-flex items-center justify-center gap-2.5 rounded-full font-semibold transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none active:scale-95 active:duration-100 overflow-hidden group before:absolute before:inset-y-0 before:-left-[28%] before:w-[36%] before:rotate-12 before:bg-gradient-to-r before:from-transparent before:via-white/35 before:to-transparent before:opacity-0 before:transition-all before:duration-800 before:ease-out group-hover:before:left-[112%] group-hover:before:opacity-100 after:absolute after:inset-[1px] after:rounded-full after:border after:border-white/10 after:opacity-0 after:transition-opacity after:duration-300 group-hover:after:opacity-100";
 
 const variantStyles = {
   primary: "bg-primary-600 text-white shadow-md shadow-primary-900/10 hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-600/25 hover:-translate-y-0.5",
