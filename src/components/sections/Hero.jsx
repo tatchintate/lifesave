@@ -86,31 +86,31 @@ function HeroVideo() {
   );
 }
 
-function TypewriterTitle() {
+function TypewriterTitle({ start = true }) {
   const line1 = "Votre sang";
   const line2 = "sauve des vies.";
   const line3 = "Chaque jour.";
 
-  const speed = 80;
-  const gap = 325;
-  const delay1 = 500;
+  const speed = 35;
+  const gap = 120;
+  const delay1 = 80;
   const delay2 = delay1 + line1.length * speed + gap;
   const delay3 = delay2 + line2.length * speed + gap;
 
   return (
     <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-[3.35rem] xl:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
-      <TypewriterText text={line1} speed={speed} delay={delay1} className="" />
+      <TypewriterText text={line1} speed={speed} delay={delay1} start={start} className="" />
       <br />
       <span className="text-primary-400 font-serif italic font-normal">
-        <TypewriterText text={line2} speed={speed} delay={delay2} />
+        <TypewriterText text={line2} speed={speed} delay={delay2} start={start} />
       </span>
       <br />
-      <TypewriterText text={line3} speed={speed} delay={delay3} />
+      <TypewriterText text={line3} speed={speed} delay={delay3} start={start} />
     </h1>
   );
 }
 
-export default function Hero() {
+export default function Hero({ startAnimation = true }) {
   const [cardsRef, cardsInView] = useInView({ threshold: 0.15 });
 
   const scrollToSection = (href) => {
@@ -139,7 +139,7 @@ export default function Hero() {
         {/* Colonne texte (6 cols) */}
         <div className="lg:col-span-6 flex flex-col gap-5 sm:gap-7">
           {/* Titre avec effet d'écriture machine à écrire */}
-          <TypewriterTitle />
+          <TypewriterTitle start={startAnimation} />
 
           {/* Texte de présentation ultra-lisible */}
           <p className="text-sm xs:text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-xl">

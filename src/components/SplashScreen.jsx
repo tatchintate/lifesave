@@ -9,9 +9,9 @@ export default function SplashScreen({ onComplete }) {
       if (containerRef.current) {
         containerRef.current.style.opacity = "0";
         containerRef.current.style.transform = "scale(1.05)";
-        setTimeout(onComplete, 700);
+        setTimeout(onComplete, 500);
       }
-    }, 2200);
+    }, 1400);
 
     return () => clearTimeout(timer);
   }, [onComplete]);

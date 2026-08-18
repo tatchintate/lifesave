@@ -1,25 +1,32 @@
 import { useState, useEffect, useRef } from "react";
 
-export default function TypewriterText({ text, className = "", speed = 40, delay = 200 }) {
+export default function TypewriterText({ text, className = "", speed = 40, delay = 200, start = true }) {
   const [displayedText, setDisplayedText] = useState("");
   const [isStarted, setIsStarted] = useState(false);
   const intervalRef = useRef(null);
   const startTimerRef = useRef(null);
 
-  // (Re)initialise lorsque le texte change
+  // (Re)initialise lorsque le texte change ou quand start passe à true
   useEffect(() => {
+    if (!start) {
+      setDisplayedText("");
+      setIsStarted(false);
+      return;
+    }
+
     setDisplayedText("");
     setIsStarted(false);
     if (startTimerRef.current) clearTimeout(startTimerRef.current);
     startTimerRef.current = setTimeout(() => setIsStarted(true), delay);
+
     return () => {
       if (startTimerRef.current) clearTimeout(startTimerRef.current);
     };
-  }, [text, delay]);
+  }, [text, delay, start]);
 
   // Lance l'intervalle d'écriture une fois démarré
   useEffect(() => {
-    if (!isStarted) return;
+    if (!isStarted || !start) return;
     if (intervalRef.current) clearInterval(intervalRef.current);
 
     intervalRef.current = setInterval(() => {
@@ -39,14 +46,15 @@ export default function TypewriterText({ text, className = "", speed = 40, delay
       if (intervalRef.current) clearInterval(intervalRef.current);
       intervalRef.current = null;
     };
-  }, [isStarted, text, speed]);
+  }, [isStarted, text, speed, start]);
 
   return (
     <span className={className}>
       {displayedText}
-      {displayedText.length < text.length && (
+      {start && displayedText.length < text.length && (
         <span className="inline-block w-1.5 h-6 ml-1 bg-primary-600 animate-pulse align-middle" />
       )}
     </span>
   );
 }
+

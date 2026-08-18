@@ -18,7 +18,12 @@ function AppContent() {
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    // Préchargement des ressources
+    // S'assurer de toujours revenir en haut de la page au chargement/rafraîchissement
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "";
@@ -28,6 +33,7 @@ function AppContent() {
   const handleSplashComplete = () => {
     setShowSplash(false);
     document.body.style.overflow = "";
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -43,7 +49,7 @@ function AppContent() {
       >
         <Navbar />
         <main>
-          <Hero />
+          <Hero startAnimation={!showSplash} />
           <WhyGive />
           <Reserves />
           <ProcessAndPrep />
