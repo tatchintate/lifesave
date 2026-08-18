@@ -58,7 +58,7 @@ function TypewriterTitle({ inView }) {
 
   return (
     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 md:text-white tracking-tight leading-tight min-h-[72px] sm:min-h-[96px]">
-      <span>{text1}</span>
+      <span className="text-neutral-900 dark:text-white">{text1}</span>
       {activeLine === 1 && (
         <span className="inline-block w-1 sm:w-1.5 h-6 sm:h-10 bg-primary-600 dark:bg-primary-400 ml-1.5 animate-pulse align-middle" />
       )}

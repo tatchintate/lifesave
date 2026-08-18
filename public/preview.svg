@@ -1,0 +1,25 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Lettre L -->
+  <path d="M 18 20 L 18 72 L 42 72 L 42 82 L 8 82 L 8 20 Z" fill="#0B1F3A"/>
+
+  <!-- Goutte de sang -->
+  <path d="M 62 14
+           C 62 14 76 34 76 46
+           C 76 55.4 68.8 62 60 62
+           C 51.2 62 44 55.4 44 46
+           C 44 34 58 14 58 14
+           C 59 12.5 61 12.5 62 14 Z"
+        fill="#E4231B"/>
+  <!-- petit reflet sur la goutte -->
+  <ellipse cx="54" cy="44" rx="3.2" ry="5.5" fill="#ffffff" opacity="0.35"/>
+
+  <!-- Lettre s -->
+  <path d="M 88 66
+           C 88 60 82 57 75 57
+           C 68 57 63 60.5 63 66
+           C 63 70.5 67 72.5 74 74
+           C 82 75.6 88 78 88 84
+           C 88 90.5 82 94 74 94
+           C 66.5 94 61 90.5 60 85"
+        fill="none" stroke="#0B1F3A" stroke-width="9" stroke-linecap="round"/>
+</svg>
