@@ -1,7 +1,6 @@
 import Logo from "../ui/Logo";
 
 import {
-  Heart,
   Phone,
   Mail,
   MapPin,

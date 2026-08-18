@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { ChevronDown, Search, AlertCircle, HelpCircle } from "lucide-react";
 import { useInView } from "../../hooks/useInView";
 
@@ -31,7 +31,7 @@ const FAQ_ITEMS = [
 ];
 
 export default function Faq() {
-  const [sectionRef, inView] = useInView({ threshold: 0.1 });
+  const [sectionRef] = useInView({ threshold: 0.1 });
   const [openIndex, setOpenIndex] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
 

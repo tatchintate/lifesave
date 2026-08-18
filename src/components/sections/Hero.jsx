@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { Play, ArrowRight, Activity, Clock, Heart, MapPin } from "lucide-react";
 import { Button } from "../ui/Button";
 import { useInView } from "../../hooks/useInView";
 import heroImg from "../../assets/hero.png";
+import TypewriterText from "../ui/TypewriterText";
 
 
 const VIDEO_ID = "rFmuV3urCKs";
@@ -90,66 +91,21 @@ function TypewriterTitle() {
   const line2 = "sauve des vies.";
   const line3 = "Chaque jour.";
 
-  const [text1, setText1] = useState("");
-  const [text2, setText2] = useState("");
-  const [text3, setText3] = useState("");
-  const [activeLine, setActiveLine] = useState(1);
-
-  useEffect(() => {
-    let currentLine = 1;
-    let i = 0;
-
-    const timer = setInterval(() => {
-      if (currentLine === 1) {
-        if (i < line1.length) {
-          setText1(line1.slice(0, i + 1));
-          i++;
-        } else {
-          currentLine = 2;
-          setActiveLine(2);
-          i = 0;
-        }
-      } else if (currentLine === 2) {
-        if (i < line2.length) {
-          setText2(line2.slice(0, i + 1));
-          i++;
-        } else {
-          currentLine = 3;
-          setActiveLine(3);
-          i = 0;
-        }
-      } else if (currentLine === 3) {
-        if (i < line3.length) {
-          setText3(line3.slice(0, i + 1));
-          i++;
-        } else {
-          setActiveLine(4);
-          clearInterval(timer);
-        }
-      }
-    }, 45);
-
-    return () => clearInterval(timer);
-  }, []);
+  const speed = 80;
+  const gap = 325;
+  const delay1 = 500;
+  const delay2 = delay1 + line1.length * speed + gap;
+  const delay3 = delay2 + line2.length * speed + gap;
 
   return (
     <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-[3.35rem] xl:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
-      <span>{text1}</span>
-      {activeLine === 1 && (
-        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-primary-400 ml-1.5 animate-pulse align-middle" />
-      )}
+      <TypewriterText text={line1} speed={speed} delay={delay1} className="" />
       <br />
       <span className="text-primary-400 font-serif italic font-normal">
-        {text2}
+        <TypewriterText text={line2} speed={speed} delay={delay2} />
       </span>
-      {activeLine === 2 && (
-        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-primary-400 ml-1.5 animate-pulse align-middle" />
-      )}
-      {text2.length > 0 && <br />}
-      <span>{text3}</span>
-      {activeLine === 3 && (
-        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-primary-400 ml-1.5 animate-pulse align-middle" />
-      )}
+      <br />
+      <TypewriterText text={line3} speed={speed} delay={delay3} />
     </h1>
   );
 }
