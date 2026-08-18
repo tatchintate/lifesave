@@ -1,4 +1,3 @@
-import React from "react";
 import { Ambulance, Baby, HeartPulse, Hourglass } from "lucide-react";
 import bloodimage from "../../assets/blood.png";
 import { useInView } from "../../hooks/useInView";
@@ -78,8 +77,9 @@ export default function WhyGive() {
             {/* Liste des raisons */}
             <div className="space-y-4 mt-8">
               <ul className="space-y-4">
-                {REASONS.map(
-                  ({ icon: Icon, title, description, color }, index) => (
+                {REASONS.map(({ icon, title, description, color }, index) => {
+                  const Icon = icon;
+                  return (
                     <li
                       key={title}
                       style={{ transitionDelay: `${(index + 1) * 120}ms` }}
@@ -93,7 +93,7 @@ export default function WhyGive() {
                         <div
                           className={`flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center font-bold text-sm sm:text-base transition-transform group-hover:scale-110 duration-300 ${color}`}
                         >
-                          {index + 1}
+                          <Icon size={16} />
                         </div>
 
                         <div className="flex-1 min-w-0">
@@ -106,8 +106,8 @@ export default function WhyGive() {
                         </div>
                       </div>
                     </li>
-                  )
-                )}
+                  );
+                })}
               </ul>
             </div>
           </div>

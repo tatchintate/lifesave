@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { Play, ArrowRight, Activity, Clock, Heart, MapPin } from "lucide-react";
 import { Button } from "../ui/Button";
 import { useInView } from "../../hooks/useInView";
 import heroImg from "../../assets/hero.png";
+import TypewriterText from "../ui/TypewriterText";
 
 
 const VIDEO_ID = "rFmuV3urCKs";
@@ -85,76 +86,31 @@ function HeroVideo() {
   );
 }
 
-function TypewriterTitle() {
+function TypewriterTitle({ start = true }) {
   const line1 = "Votre sang";
   const line2 = "sauve des vies.";
   const line3 = "Chaque jour.";
 
-  const [text1, setText1] = useState("");
-  const [text2, setText2] = useState("");
-  const [text3, setText3] = useState("");
-  const [activeLine, setActiveLine] = useState(1);
-
-  useEffect(() => {
-    let currentLine = 1;
-    let i = 0;
-
-    const timer = setInterval(() => {
-      if (currentLine === 1) {
-        if (i < line1.length) {
-          setText1(line1.slice(0, i + 1));
-          i++;
-        } else {
-          currentLine = 2;
-          setActiveLine(2);
-          i = 0;
-        }
-      } else if (currentLine === 2) {
-        if (i < line2.length) {
-          setText2(line2.slice(0, i + 1));
-          i++;
-        } else {
-          currentLine = 3;
-          setActiveLine(3);
-          i = 0;
-        }
-      } else if (currentLine === 3) {
-        if (i < line3.length) {
-          setText3(line3.slice(0, i + 1));
-          i++;
-        } else {
-          setActiveLine(4);
-          clearInterval(timer);
-        }
-      }
-    }, 45);
-
-    return () => clearInterval(timer);
-  }, []);
+  const speed = 35;
+  const gap = 120;
+  const delay1 = 80;
+  const delay2 = delay1 + line1.length * speed + gap;
+  const delay3 = delay2 + line2.length * speed + gap;
 
   return (
     <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-[3.35rem] xl:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
-      <span>{text1}</span>
-      {activeLine === 1 && (
-        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-primary-400 ml-1.5 animate-pulse align-middle" />
-      )}
+      <TypewriterText text={line1} speed={speed} delay={delay1} start={start} className="" />
       <br />
       <span className="text-primary-400 font-serif italic font-normal">
-        {text2}
+        <TypewriterText text={line2} speed={speed} delay={delay2} start={start} />
       </span>
-      {activeLine === 2 && (
-        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-primary-400 ml-1.5 animate-pulse align-middle" />
-      )}
-      {text2.length > 0 && <br />}
-      <span>{text3}</span>
-      {activeLine === 3 && (
-        <span className="inline-block w-1 sm:w-1.5 h-7 sm:h-11 bg-primary-400 ml-1.5 animate-pulse align-middle" />
-      )}
+      <br />
+      <TypewriterText text={line3} speed={speed} delay={delay3} start={start} />
     </h1>
   );
 }
 
-export default function Hero() {
+export default function Hero({ startAnimation = true }) {
   const [cardsRef, cardsInView] = useInView({ threshold: 0.15 });
 
   const scrollToSection = (href) => {
@@ -183,7 +139,7 @@ export default function Hero() {
         {/* Colonne texte (6 cols) */}
         <div className="lg:col-span-6 flex flex-col gap-5 sm:gap-7">
           {/* Titre avec effet d'écriture machine à écrire */}
-          <TypewriterTitle />
+          <TypewriterTitle start={startAnimation} />
 
           {/* Texte de présentation ultra-lisible */}
           <p className="text-sm xs:text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-xl">

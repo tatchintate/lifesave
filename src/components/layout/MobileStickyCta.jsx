@@ -1,4 +1,3 @@
-import React from "react";
 import { Sparkles, MapPin } from "lucide-react";
 
 export default function MobileStickyCta() {

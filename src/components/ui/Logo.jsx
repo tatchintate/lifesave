@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Logo({ className = "" }) {
   return (
     <div className={`relative w-10 h-10 flex-shrink-0 ${className}`}>

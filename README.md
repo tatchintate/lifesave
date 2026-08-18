@@ -69,6 +69,7 @@ src/
 │   ├── hero.png
 │   └── lifesave.png
 ├── components/
+│   ├── SplashScreen.jsx
 │   ├── layout/
 │   │   ├── Navbar.jsx
 │   │   ├── Footer.jsx
@@ -85,6 +86,8 @@ src/
 │       ├── Button.jsx
 │       ├── Logo.jsx
 │       └── TypewriterText.jsx
+├── context/
+│   └── ThemeContext.jsx
 ├── data/
 │   └── centres.js
 ├── hooks/
